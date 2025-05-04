@@ -1,12 +1,19 @@
 import { TextField } from "@mui/material"
 import { BASIC_INPUT_STYLE, FORM_POSITION, HEAD_DATA_FORM } from "@utils/consts"
 import { formMovement } from "@utils/formMovement"
-import { useForm } from "@context/FormContext"
+
 import { handleFileChange, handleInputChange } from "@utils/updateForm"
 import FormTitle from "@components/FormTitle"
+import {
+  useErrors,
+  useHeadData,
+  useProgress,
+} from "@context/useFormContextHooks"
 
 export default function HeadData() {
-  const { progress, headDataForm, setHeadDataForm, errors } = useForm()
+  const { progress } = useProgress()
+  const { errors } = useErrors()
+  const { setHeadDataForm, headDataForm } = useHeadData()
 
   const { translateClass, slotProps } = formMovement({
     progress,
@@ -30,7 +37,6 @@ export default function HeadData() {
         required
         error={!!errors.fullName}
         helperText={errors.fullName}
-        value={headDataForm.fullName}
         onChange={(element) =>
           handleInputChange({ element, setter: setHeadDataForm })
         }
@@ -49,14 +55,14 @@ export default function HeadData() {
         name={HEAD_DATA_FORM.INPUTS.PHOTO.KEY}
         id={HEAD_DATA_FORM.INPUTS.PHOTO.KEY}
         label={HEAD_DATA_FORM.INPUTS.PHOTO.LABEL}
-        error={!!errors.photo} // Si hay error, mostramos el campo en rojo
+        error={!!errors.photo}
         helperText={errors.photo}
         onChange={(element) =>
           handleFileChange({
             element: element as React.ChangeEvent<HTMLInputElement>,
             setter: setHeadDataForm,
           })
-        } // Manejamos el cambio del archivo
+        }
         {...BASIC_INPUT_STYLE}
         sx={{
           input: {

@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { EducationType } from "@types"
-import { useForm } from "@context/FormContext"
 import { formMovement } from "@utils/formMovement"
 import { BUTTON_LABEL, EDUCATION_FORM, FORM_POSITION } from "@utils/consts"
 import AddButton from "@components/AddButton"
@@ -9,13 +8,16 @@ import { handleDelete, handleEdit } from "@utils/formHandlers"
 import GenericEntityForm from "@components/template/GenericEntityForm"
 import { singleEducationSchema } from "@schema/education"
 import FormTitle from "@components/FormTitle"
+import { useEducation, useProgress } from "@context/useFormContextHooks"
 
 export default function Education() {
   const [educations, setEducations] = useState<EducationType[]>([])
   const [showForm, setShowForm] = useState(false)
   const [editingIndex, setEditingIndex] = useState<number | null>(null)
 
-  const { progress, setEducationForm } = useForm()
+  const { progress } = useProgress()
+
+  const { setEducationForm } = useEducation()
 
   const { translateClass, slotProps } = formMovement({
     progress,

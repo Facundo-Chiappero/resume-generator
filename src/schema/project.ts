@@ -43,7 +43,7 @@ export const singleProjectSchema = z
     (data) => {
       const hasFrom = !!data[PROJECTS_FORM.INPUTS.FROM.KEY]
       const hasTo = !!data[PROJECTS_FORM.INPUTS.TO.KEY]
-      return hasFrom === hasTo // Ambos deben existir o ninguno
+      return hasFrom === hasTo
     },
     {
       path: [PROJECTS_FORM.INPUTS.FROM.KEY],

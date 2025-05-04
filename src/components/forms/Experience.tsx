@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { ExperienceType } from "@types"
-import { useForm } from "@context/FormContext"
+
 import { formMovement } from "@utils/formMovement"
 import { BUTTON_LABEL, EXPERIENCE_FORM, FORM_POSITION } from "@utils/consts"
 import AddButton from "@components/AddButton"
@@ -9,13 +9,15 @@ import GenericEntityList from "@components/template/GenericEntityList"
 import { handleDelete, handleEdit } from "@utils/formHandlers"
 import { singleExperienceSchema } from "@schema/experience"
 import FormTitle from "@components/FormTitle"
+import { useExperience, useProgress } from "@context/useFormContextHooks"
 
 export default function Education() {
   const [experiences, setExperiences] = useState<ExperienceType[]>([])
   const [showForm, setShowForm] = useState(false)
   const [editingIndex, setEditingIndex] = useState<number | null>(null)
 
-  const { progress, setExperienceForm } = useForm()
+  const { progress } = useProgress()
+  const { setExperienceForm } = useExperience()
 
   const { translateClass, slotProps } = formMovement({
     progress,

@@ -32,8 +32,8 @@ type Props<T> = {
     }
   }
 }
-//this is what should be used in components to create a form
 
+//this is what should be used in components to create a form
 export default function GenericEntityForm<T>({
   editingIndex,
   data,
@@ -94,7 +94,7 @@ export default function GenericEntityForm<T>({
         setEditingIndex(null)
       }}
       zodSchema={schema}
-      onFieldChange={handleFieldChange} // ✅ Aquí lo pasamos
+      onFieldChange={handleFieldChange}
       formFields={Object.values(config.INPUTS).map((input) => ({
         label: input.LABEL,
         field: input.KEY,

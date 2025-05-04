@@ -1,8 +1,8 @@
 import { Button } from "@mui/material"
 import LinearProgressWithLabel from "./LinearProgressWithLabel"
-import { FormContextType, useForm } from "@context/FormContext"
 import { FORMS_AMOUNT, NAV_BUTTONS } from "@utils/consts"
 import { useHandleNext } from "@hooks/useHandleNext"
+import { useProgress } from "@context/useFormContextHooks"
 
 const basicButtonStyle = {
   fontWeight: "bold",
@@ -11,7 +11,10 @@ const basicButtonStyle = {
 const handlePrevious = ({
   progress,
   setProgress,
-}: Partial<FormContextType>) => {
+}: {
+  progress: number
+  setProgress: React.Dispatch<React.SetStateAction<number>>
+}) => {
   if (!progress || !setProgress) return
 
   if (progress > 0) {
@@ -20,7 +23,7 @@ const handlePrevious = ({
 }
 
 export default function NavButtons() {
-  const { progress, setProgress } = useForm()
+  const { progress, setProgress } = useProgress()
 
   const { handleNext } = useHandleNext()
 

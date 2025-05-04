@@ -214,7 +214,6 @@ export const BUTTON_LABEL = {
   DOWNLOAD_WORD: "Download Word less recommended",
 }
 
-// Error Messages
 export const ERROR = {
   HEAD_DATA: {
     SHORT: "Full name must have at least 2 characters.",
@@ -272,7 +271,6 @@ export const ERROR = {
   },
 }
 
-// Form Constants
 export const FORM_POSITION = {
   HEAD_DATA: 0,
   PERSONAL_DATA: 1,
@@ -302,10 +300,10 @@ export const BASIC_INPUT_STYLE = {
     ".MuiFilledInput-root": {
       backgroundColor: "#444",
       "&:hover": {
-        backgroundColor: "#555", // más claro que el base
+        backgroundColor: "#555",
       },
       "&.Mui-focused": {
-        backgroundColor: "#333", // más oscuro al enfocar si querés
+        backgroundColor: "#333",
       },
     },
   },

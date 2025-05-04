@@ -1,21 +1,27 @@
-import { useForm } from "@context/FormContext"
 import { Button } from "@mui/material"
 import { BUTTON_LABEL, CREATE_RESUME, FORM_POSITION } from "@utils/consts"
 import { formMovement } from "@utils/formMovement"
 import { createResumePdf } from "@utils/createResumePdf"
 import { createResumeWord } from "@utils/createResumeWord"
 import FormTitle from "@components/FormTitle"
+import {
+  useEducation,
+  useExperience,
+  useHeadData,
+  usePersonalData,
+  useProgress,
+  useProject,
+  useSkills,
+} from "@context/useFormContextHooks"
 
 export default function CreateResume() {
-  const {
-    progress,
-    headDataForm,
-    personalDataForm,
-    educationForm,
-    experienceForm,
-    projectForm,
-    skillsForm,
-  } = useForm()
+  const { progress } = useProgress()
+  const { personalDataForm } = usePersonalData()
+  const { headDataForm } = useHeadData()
+  const { educationForm } = useEducation()
+  const { experienceForm } = useExperience()
+  const { projectForm } = useProject()
+  const { skillsForm } = useSkills()
 
   const { translateClass, slotProps } = formMovement({
     progress,

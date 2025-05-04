@@ -1,5 +1,5 @@
 import { TextField } from "@mui/material"
-import { useForm } from "@context/FormContext"
+
 import { formMovement } from "@utils/formMovement"
 import {
   BASIC_INPUT_STYLE,
@@ -8,9 +8,16 @@ import {
 } from "@utils/consts"
 import { handleInputChange } from "@utils/updateForm"
 import FormTitle from "@components/FormTitle"
+import {
+  useErrors,
+  usePersonalData,
+  useProgress,
+} from "@context/useFormContextHooks"
 
 export default function PersonalData() {
-  const { progress, setPersonalDataForm, errors } = useForm()
+  const { progress } = useProgress()
+  const { errors } = useErrors()
+  const { setPersonalDataForm } = usePersonalData()
 
   const { translateClass, slotProps } = formMovement({
     progress,

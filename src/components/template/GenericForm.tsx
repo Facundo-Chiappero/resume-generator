@@ -24,7 +24,7 @@ interface GenericFormProps<T> {
     type?: string
     categories?: readonly string[] //used for select type inputs
     autoComplete?: string
-  } & Omit<TextFieldProps, "value" | "onChange" | "name" | "label">)[] // Campos específicos del tipo
+  } & Omit<TextFieldProps, "value" | "onChange" | "name" | "label">)[]
   zodSchema?: ZodSchema<T>
   onFieldChange?: (field: keyof T, value: string) => void
 }
@@ -82,7 +82,7 @@ export default function GenericForm<T>({
                   }}
                   sx={{
                     ".MuiSelect-select": {
-                      color: "white", // Cambia el color del texto a blanco
+                      color: "white",
                     },
                   }}
                   onChange={(e) => {
@@ -93,7 +93,7 @@ export default function GenericForm<T>({
                       setFormData,
                       value,
                     })
-                    onFieldChange?.(field, value) // LLAMAR A LA NUEVA FUNCIÓN
+                    onFieldChange?.(field, value)
                   }}
                 >
                   {categories?.map((category) => (
@@ -104,10 +104,10 @@ export default function GenericForm<T>({
                         backgroundColor: "#333",
                         color: "#fff",
                         "&.Mui-selected": {
-                          backgroundColor: "#444", // color al seleccionar
+                          backgroundColor: "#444",
                         },
                         "&:hover": {
-                          backgroundColor: "#555", // color al pasar el mouse
+                          backgroundColor: "#555",
                         },
                       }}
                     >

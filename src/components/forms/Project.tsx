@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useForm } from "@context/FormContext"
+
 import { formMovement } from "@utils/formMovement"
 import { BUTTON_LABEL, FORM_POSITION, PROJECTS_FORM } from "@utils/consts"
 import AddButton from "@components/AddButton"
@@ -9,13 +9,16 @@ import GenericEntityForm from "@components/template/GenericEntityForm"
 import { ProjectType } from "types"
 import { singleProjectSchema } from "@schema/project"
 import FormTitle from "@components/FormTitle"
+import { useProgress, useProject } from "@context/useFormContextHooks"
 
 export default function Project() {
   const [projects, setProjects] = useState<ProjectType[]>([])
   const [showForm, setShowForm] = useState(false)
   const [editingIndex, setEditingIndex] = useState<number | null>(null)
 
-  const { progress, setProjectForm } = useForm()
+  const { progress } = useProgress()
+
+  const { setProjectForm } = useProject()
 
   const { translateClass, slotProps } = formMovement({
     progress,

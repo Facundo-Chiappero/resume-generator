@@ -36,7 +36,7 @@ export const createResumePdf = async ({
 }: Props) => {
   const content: Content[] = []
 
-  // FOTO
+  // PHOTO
   if (headDataForm.photo) {
     const base64Image = await toBase64(headDataForm.photo)
     content.push({
@@ -47,7 +47,7 @@ export const createResumePdf = async ({
     })
   }
 
-  // NOMBRE
+  // NAME
   content.push(
     {
       text: headDataForm.fullName,
@@ -197,7 +197,6 @@ export const createResumePdf = async ({
         })
       }
 
-      // Espacio entre experiencias
       content.push({ text: "", margin: [0, 4] })
     })
   }
@@ -282,7 +281,7 @@ export const createResumePdf = async ({
     wrapRight: {
       fontSize: 10,
       alignment: "right",
-      // Este estilo simula overflow-wrap: anywhere
+      // this is like overflow-wrap: anywhere
       characterSpacing: 0,
     },
   }

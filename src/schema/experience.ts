@@ -30,10 +30,9 @@ export const singleExperienceSchema = z
         message: ERROR.EXPERIENCE.INVALID_TO_DATE,
       }),
 
-    // No transform here, tasks stays as a string with semicolons
     [EXPERIENCE_FORM.INPUTS.TASKS.KEY]: z
       .string()
-      .min(1, { message: ERROR.EXPERIENCE.SPLIT_TASKS }) // Ensure at least one task
+      .min(1, { message: ERROR.EXPERIENCE.SPLIT_TASKS })
       .refine((val) => val.includes(";"), {
         message: ERROR.EXPERIENCE.SPLIT_TASKS,
       }),

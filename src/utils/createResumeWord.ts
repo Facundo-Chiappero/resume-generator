@@ -45,7 +45,7 @@ export const createResumeWord = async ({
 }: Props) => {
   const children: Paragraph[] = []
 
-  // FOTO
+  // PHOTO
   if (headDataForm.photo) {
     const base64 = await toBase64(headDataForm.photo)
     const imageData = base64.split(",")[1]
@@ -70,7 +70,7 @@ export const createResumeWord = async ({
     )
   }
 
-  // name
+  // NAME
   children.push(
     new Paragraph({
       text: headDataForm.fullName,
@@ -79,7 +79,7 @@ export const createResumeWord = async ({
     })
   )
 
-  // personal data
+  // PERSONAL DATA
   const personalFields = [
     personalDataForm.address?.trim(),
     personalDataForm.location?.trim(),
@@ -281,7 +281,6 @@ export const createResumeWord = async ({
     })
   }
 
-  // create document
   const docFinal = new Document({
     styles: {
       default: {
