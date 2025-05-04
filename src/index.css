@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@theme {
+  --color-dark-background-primary: #0f0f0f;
+  --color-dark-background-secondary: #1d1d1d;
+  --color-dark-background-white: #dfdfdf;
+  --color-dark-text-primary: #dfdfdf;
+  --color-dark-text-secondary: #1d1d1d;
+}
+.dark-text-secondary {
+  @apply text-transparent bg-clip-text;
+  background-image: linear-gradient(
+    90deg,
+    hsl(270, 90%, 50%) 0%,
+    hsl(270, 100%, 60%) 100%
+  );
+}
+
+.form {
+  @apply gap-2 flex flex-col top-0 left-0 w-full h-full min-h-72 overflow-auto;
+
+  transition: translate 0.3s ease, opacity 0.3s ease;
+}
+
+p {
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+}
