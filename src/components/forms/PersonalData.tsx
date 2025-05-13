@@ -1,11 +1,5 @@
-import { TextField } from "@mui/material"
-
 import { formMovement } from "@utils/formMovement"
-import {
-  BASIC_INPUT_STYLE,
-  FORM_POSITION,
-  PERSONAL_DATA_FORM,
-} from "@utils/consts"
+import { FORM_POSITION, PERSONAL_DATA_FORM } from "@utils/consts"
 import { handleInputChange } from "@utils/updateForm"
 import FormTitle from "@components/FormTitle"
 import {
@@ -13,11 +7,18 @@ import {
   usePersonalData,
   useProgress,
 } from "@context/useFormContextHooks"
+import { getBasicInputStyle } from "@utils/getBasicInputStyle"
+import { useIsLight } from "@hooks/useIsLight"
+import Input from "@components/Input"
+import { PersonalDataType } from "types"
 
 export default function PersonalData() {
+  const isLight = useIsLight()
+
+  const basicInputStyle = getBasicInputStyle(isLight)
   const { progress } = useProgress()
   const { errors } = useErrors()
-  const { setPersonalDataForm } = usePersonalData()
+  const { setPersonalDataForm, personalDataForm } = usePersonalData()
 
   const { translateClass, slotProps } = formMovement({
     progress,
@@ -30,7 +31,7 @@ export default function PersonalData() {
     <section className={`form ${translateClass} justify-center`}>
       <FormTitle text={PERSONAL_DATA_FORM.TITLE} />
 
-      <TextField
+      <Input<PersonalDataType>
         aria-invalid="false"
         aria-describedby={PERSONAL_DATA_FORM.INPUTS.LOCATION.KEY}
         onChange={(element) =>
@@ -46,10 +47,14 @@ export default function PersonalData() {
         required={inputs.LOCATION.REQUIRED}
         autoComplete={inputs.LOCATION.AUTOCOMPLETE}
         slotProps={slotProps}
-        {...BASIC_INPUT_STYLE}
+        basicInputStyle={basicInputStyle}
+        value={personalDataForm.location ?? ""}
+        previousValue={personalDataForm.location ?? ""}
+        instruction={PERSONAL_DATA_FORM.INPUTS.LOCATION.INSTRUCTION}
+        setFormEntry={setPersonalDataForm}
       />
 
-      <TextField
+      <Input<PersonalDataType>
         aria-invalid="false"
         aria-describedby={PERSONAL_DATA_FORM.INPUTS.EMAIL.KEY}
         onChange={(element) =>
@@ -65,10 +70,14 @@ export default function PersonalData() {
         required={inputs.EMAIL.REQUIRED}
         autoComplete={inputs.EMAIL.AUTOCOMPLETE}
         slotProps={slotProps}
-        {...BASIC_INPUT_STYLE}
+        basicInputStyle={basicInputStyle}
+        value={personalDataForm.email ?? ""}
+        previousValue={personalDataForm.email ?? ""}
+        instruction={PERSONAL_DATA_FORM.INPUTS.EMAIL.INSTRUCTION}
+        setFormEntry={setPersonalDataForm}
       />
 
-      <TextField
+      <Input<PersonalDataType>
         aria-invalid="false"
         aria-describedby={PERSONAL_DATA_FORM.INPUTS.ADDRESS.KEY}
         onChange={(element) =>
@@ -84,10 +93,14 @@ export default function PersonalData() {
         required={inputs.ADDRESS.REQUIRED}
         autoComplete={inputs.ADDRESS.AUTOCOMPLETE}
         slotProps={slotProps}
-        {...BASIC_INPUT_STYLE}
+        basicInputStyle={basicInputStyle}
+        value={personalDataForm.address ?? ""}
+        previousValue={personalDataForm.address ?? ""}
+        instruction={PERSONAL_DATA_FORM.INPUTS.ADDRESS.INSTRUCTION}
+        setFormEntry={setPersonalDataForm}
       />
 
-      <TextField
+      <Input<PersonalDataType>
         aria-invalid="false"
         aria-describedby={PERSONAL_DATA_FORM.INPUTS.PHONE.KEY}
         onChange={(element) =>
@@ -103,7 +116,11 @@ export default function PersonalData() {
         required={inputs.PHONE.REQUIRED}
         autoComplete={inputs.PHONE.AUTOCOMPLETE}
         slotProps={slotProps}
-        {...BASIC_INPUT_STYLE}
+        basicInputStyle={basicInputStyle}
+        value={personalDataForm.phone ?? ""}
+        previousValue={personalDataForm.phone ?? ""}
+        instruction={PERSONAL_DATA_FORM.INPUTS.PHONE.INSTRUCTION}
+        setFormEntry={setPersonalDataForm}
       />
     </section>
   )

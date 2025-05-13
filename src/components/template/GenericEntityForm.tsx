@@ -1,11 +1,16 @@
 import GenericForm from "@components/template/GenericForm"
-import { SKILL_PLACEHOLDERS, SKILLS_FORM } from "@utils/consts"
+import {
+  SKILL_INSTRUCTIONS,
+  SKILL_PLACEHOLDERS,
+  SKILLS_FORM,
+} from "@utils/consts"
 import { useState } from "react"
 import { z } from "zod"
 
 type Props<T> = {
   editingIndex: number | null
   data: T[]
+  previousValue: T[]
   setData: React.Dispatch<React.SetStateAction<T[]>>
   setFormData: React.Dispatch<React.SetStateAction<T[]>>
   setEditingIndex: React.Dispatch<React.SetStateAction<number | null>>
@@ -22,6 +27,7 @@ type Props<T> = {
         TYPE?: string
         CATEGORIES?: readonly string[]
         AUTOCOMPLETE?: string
+        INSTRUCTION?: string
       }
     >
   }
@@ -37,6 +43,7 @@ type Props<T> = {
 export default function GenericEntityForm<T>({
   editingIndex,
   data,
+  previousValue,
   setData,
   setFormData,
   setEditingIndex,
@@ -52,9 +59,11 @@ export default function GenericEntityForm<T>({
   const [placeholders, setPlaceholders] = useState<Record<keyof T, string>>(
     {} as Record<keyof T, string>
   )
+  const [instructions, setInstructions] = useState<Record<keyof T, string>>(
+    {} as Record<keyof T, string>
+  )
 
   // this references to the CATEGORY property in SKILLS_FORM.INPUTS
-  // SKILLS_FORM.INPUTS.CATEGORY.KEY.toUpperCase() in config.INPUTS
   // same whit SKILL
   const isSkillsForm =
     SKILLS_FORM.INPUTS.CATEGORY.KEY.toUpperCase() in config.INPUTS &&
@@ -62,15 +71,22 @@ export default function GenericEntityForm<T>({
 
   const initialFormData = editingIndex !== null ? data[editingIndex] : emptyData
 
+  // with this we can dynamically change properties from the skills form
   const handleFieldChange = (field: keyof T, value: string) => {
     if (!isSkillsForm || field !== SKILLS_FORM.INPUTS.CATEGORY.KEY) return
 
     const examples = SKILL_PLACEHOLDERS[value?.toLowerCase()] || []
     const placeholder = examples.join(", ")
 
+    const instruction = SKILL_INSTRUCTIONS[value?.toLowerCase()] || []
+
     setPlaceholders((prev) => ({
       ...prev,
       ["skill" as keyof T]: placeholder,
+    }))
+    setInstructions((prev) => ({
+      ...prev,
+      ["skill" as keyof T]: instruction,
     }))
   }
 
@@ -95,16 +111,25 @@ export default function GenericEntityForm<T>({
       }}
       zodSchema={schema}
       onFieldChange={handleFieldChange}
-      formFields={Object.values(config.INPUTS).map((input) => ({
-        label: input.LABEL,
-        field: input.KEY,
-        required: input.REQUIRED,
-        placeholder: placeholders[input.KEY] || input.PLACEHOLDER,
-        type: input.TYPE,
-        categories: input.CATEGORIES,
-        autoComplete: input.AUTOCOMPLETE,
-        ...slotProps,
-      }))}
+      formFields={Object.values(config.INPUTS).map((input) => {
+        const fieldPreviousValue =
+          previousValue?.length > 0
+            ? previousValue.map((item) => item[input.KEY]).join(", ")
+            : ""
+
+        return {
+          label: input.LABEL,
+          field: input.KEY,
+          required: input.REQUIRED,
+          placeholder: placeholders[input.KEY] || input.PLACEHOLDER,
+          type: input.TYPE,
+          categories: input.CATEGORIES,
+          autoComplete: input.AUTOCOMPLETE,
+          instruction: instructions[input.KEY] || input.INSTRUCTION,
+          previousValue: fieldPreviousValue,
+        }
+      })}
+      slotProps={slotProps}
     />
   )
 }

@@ -14,11 +14,19 @@
 @theme {
   --color-dark-background-primary: #0f0f0f;
   --color-dark-background-secondary: #1d1d1d;
+  --color-dark-background-tertiary: #2f2f2f;
   --color-dark-background-white: #dfdfdf;
   --color-dark-text-primary: #dfdfdf;
   --color-dark-text-secondary: #1d1d1d;
+
+  --color-light-background-primary: #dfdfdf;
+  --color-light-background-secondary: #e8e4f0;
+  --color-light-background-tertiary: #f6f6f6;
+  --color-light-background-black: #0f0f0f;
+  --color-light-text-primary: #1d1d1d;
+  --color-light-text-secondary: #dfdfdf;
 }
-.dark-text-secondary {
+.title {
   @apply text-transparent bg-clip-text;
   background-image: linear-gradient(
     90deg,
@@ -36,4 +44,20 @@
 p {
   overflow-wrap: anywhere;
   text-wrap: pretty;
+}
+
+@layer utilities {
+  @keyframes spinner {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .animate-spinner {
+    animation: spinner 1.2s linear infinite;
+    transform-origin: 40px 40px;
+  }
 }

@@ -19,11 +19,18 @@ export const personalDataSchema = z.object({
       message: ERROR.PERSONAL_DATA.LOCATION_FORMAT,
     }),
 
+  // i'm not using .email() since the integration with AI fails
   [PERSONAL_DATA_FORM.INPUTS.EMAIL.KEY]: z
     .string({ message: ERROR.PERSONAL_DATA.EMAIL_REQUIRED })
-    .email({ message: ERROR.PERSONAL_DATA.EMAIL_FORMAT })
     .trim()
-    .transform((value) => value.toLowerCase()),
+    .transform((value) => value.toLowerCase())
+    .refine(
+      (val) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        return emailRegex.test(val)
+      },
+      { message: ERROR.PERSONAL_DATA.EMAIL_FORMAT }
+    ),
 
   [PERSONAL_DATA_FORM.INPUTS.PHONE.KEY]: z
     .string()

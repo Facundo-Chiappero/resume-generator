@@ -13,8 +13,11 @@ import {
   useProject,
   useSkills,
 } from "@context/useFormContextHooks"
+import { useIsLight } from "@hooks/useIsLight"
 
 export default function CreateResume() {
+  const isLight = useIsLight()
+
   const { progress } = useProgress()
   const { personalDataForm } = usePersonalData()
   const { headDataForm } = useHeadData()
@@ -72,6 +75,9 @@ export default function CreateResume() {
         }}
         sx={{
           maxWidth: "180px",
+          "&:hover": {
+            background: isLight ? "#dadada" : undefined,
+          },
         }}
         tabIndex={slotProps.htmlInput.tabIndex}
       >

@@ -11,7 +11,6 @@ import { ErrorsProvider } from "./ErrorsContext"
 export const FormProviders = ({ children }: { children: ReactNode }) => {
   // This approach is better than using a single context, since each piece of state is managed and memoized independently.
   // As a result, only the components consuming the context that changed will re-render, improving performance and avoiding unnecessary updates.
-
   return (
     <ErrorsProvider>
       <ProgressProvider>

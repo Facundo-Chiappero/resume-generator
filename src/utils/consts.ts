@@ -1,3 +1,18 @@
+export const NAVIGATION = {
+  HOME: {
+    SLUG: "/",
+    NAME: "Go Home",
+  },
+  UPGRADE: {
+    SLUG: "/upgrade",
+    NAME: "Upgrade",
+  },
+  EVENTS: {
+    PUSHSTATE: "pushstate" as const,
+    POPSTATE: "popstate" as const,
+  },
+}
+
 export const HEAD_DATA_FORM = {
   INPUTS: {
     FULL_NAME: {
@@ -5,6 +20,8 @@ export const HEAD_DATA_FORM = {
       LABEL: "Full Name",
       PLACEHOLDER: "John Doe",
       AUTOCOMPLETE: "name",
+      INSTRUCTION: "give me a random name",
+      REQUIRED: true,
     },
     PHOTO: {
       KEY: "photo" as const,
@@ -21,13 +38,17 @@ export const PERSONAL_DATA_FORM = {
       PLACEHOLDER: "Austin, Texas, USA",
       REQUIRED: true,
       AUTOCOMPLETE: "address-level2",
+      INSTRUCTION:
+        "give me a address level 2 from any part of the world, e.g: Austin, Texas, USA, but not this one",
     },
     EMAIL: {
       KEY: "email" as const,
       LABEL: "Email",
-      PLACEHOLDER: "john.doe@example.com",
+      PLACEHOLDER: "johndoe@example.com",
       REQUIRED: true,
       AUTOCOMPLETE: "email",
+      INSTRUCTION:
+        "give me an example email direction, e.g: johndoe@example.com, but not this one",
     },
     ADDRESS: {
       KEY: "address" as const,
@@ -35,6 +56,8 @@ export const PERSONAL_DATA_FORM = {
       PLACEHOLDER: "1234 Elm Street, Apartment 56",
       REQUIRED: false,
       AUTOCOMPLETE: "street-address",
+      INSTRUCTION:
+        "give me a street address from any part of the world, e.g: 1234 Elm Street, Apartment 56, but not this one",
     },
     PHONE: {
       KEY: "phone" as const,
@@ -42,6 +65,8 @@ export const PERSONAL_DATA_FORM = {
       PLACEHOLDER: "+1 800 555 1212, +54 9 1123456789",
       REQUIRED: false,
       AUTOCOMPLETE: "tel",
+      INSTRUCTION:
+        "give me a phone number from any part of the world, e.g: +1 800 555 1212, but not this one",
     },
   },
   TITLE: "Personal Information",
@@ -54,6 +79,8 @@ export const EDUCATION_FORM = {
       PLACEHOLDER: "Harvard University",
       REQUIRED: true,
       AUTOCOMPLETE: "organization",
+      INSTRUCTION:
+        "give me the name of a college from any part of the world, e.g: Harvard University, but not this one.",
     },
     LOCATION: {
       KEY: "educationLocation" as const,
@@ -61,6 +88,8 @@ export const EDUCATION_FORM = {
       PLACEHOLDER: "Cambridge, MA, USA",
       REQUIRED: true,
       AUTOCOMPLETE: "address-level2",
+      INSTRUCTION:
+        "give me location from any part of the world, e.g: Cambridge, MA, USA, but not this one. Ensure to give the state too and not only the country",
     },
     YEAR: {
       KEY: "year" as const,
@@ -68,24 +97,32 @@ export const EDUCATION_FORM = {
       PLACEHOLDER: "2022",
       REQUIRED: true,
       AUTOCOMPLETE: "bday-year",
+      INSTRUCTION:
+        "give me a year, the year could be any year from 1990 to 2024",
     },
     GPA: {
       KEY: "gpa" as const,
       LABEL: "GPA",
-      PLACEHOLDER: "3.9/4.0",
+      PLACEHOLDER: "3.9/4",
       REQUIRED: false,
+      INSTRUCTION:
+        "Generate a random GPA in the format 'x/y' where x is a score (whole or decimal number) and y is the maximum possible score (whole number). Example: '7.5/10' or '3/5'. Must include both numbers with a slash between them.",
     },
     THESIS: {
       KEY: "thesis" as const,
       LABEL: "Highlighted Project/Thesis",
       PLACEHOLDER: "AI for Social Good: Predictive Modeling in Public Health",
       REQUIRED: false,
+      INSTRUCTION:
+        "give me a title for a thesis, e.g: AI for Social Good: Predictive Modeling in Public Health, but not this one, it doesn't need to be about technology",
     },
     RELATED_SUBJECTS: {
       KEY: "relatedSubjects" as const,
       LABEL: "Related Subjects",
       PLACEHOLDER: "Machine Learning, Ethics in AI, Data Science",
       REQUIRED: false,
+      INSTRUCTION:
+        "give me a related subject that i could take while in college, related to a work, e.g: Machine Learning, Ethics in AI, Data Science, but not this ones, it doesn't need to be about technology",
     },
   },
   TITLE: "Studies",
@@ -98,6 +135,8 @@ export const EXPERIENCE_FORM = {
       PLACEHOLDER: "Google LLC",
       REQUIRED: true,
       AUTOCOMPLETE: "organization",
+      INSTRUCTION:
+        "give me the name of a company from any part of the world, e.g: Google LLC, but not this ones, it doesn't need to be about technology",
     },
     ROLE: {
       KEY: "role" as const,
@@ -105,6 +144,8 @@ export const EXPERIENCE_FORM = {
       PLACEHOLDER: "Software Engineering Intern",
       REQUIRED: true,
       AUTOCOMPLETE: "organization-title",
+      INSTRUCTION:
+        "give me a position or role in a company, e.g: Software Engineering Intern, but not this ones, it doesn't need to be about technology",
     },
     EXPERIENCE_LOCATION: {
       KEY: "experienceLocation" as const,
@@ -112,6 +153,8 @@ export const EXPERIENCE_FORM = {
       PLACEHOLDER: "Mountain View, CA, USA",
       REQUIRED: true,
       AUTOCOMPLETE: "address-level2",
+      INSTRUCTION:
+        "give me a location from any part of the world, e.g: Mountain View, CA, USA, but not this one",
     },
     FROM: {
       KEY: "from" as const,
@@ -119,6 +162,7 @@ export const EXPERIENCE_FORM = {
       PLACEHOLDER: "June 2021",
       REQUIRED: true,
       TYPE: "date",
+      INSTRUCTION: "give me a date with this format: yyyy-MM-dd",
     },
     TO: {
       KEY: "to" as const,
@@ -126,12 +170,15 @@ export const EXPERIENCE_FORM = {
       PLACEHOLDER: "August 2021",
       REQUIRED: true,
       TYPE: "date",
+      INSTRUCTION: "give me a date with this format: yyyy-MM-dd",
     },
     TASKS: {
       KEY: "tasks" as const,
       LABEL: "Key Responsibilities or Achievements",
-      PLACEHOLDER: "Improved project tracking system; Created clear workflows",
+      PLACEHOLDER: "Improved project tracking system; Created clear workflows;",
       REQUIRED: true,
+      INSTRUCTION:
+        "give me a list of tasks i could have done while working, each one separated by semicolon (;), e.g: Improved project tracking system; Created clear workflows;, but not this ones, it doesn't need to be about technology. Always give at least 3",
     },
   },
   TITLE: "Working Experience",
@@ -143,12 +190,16 @@ export const PROJECTS_FORM = {
       LABEL: "Related Project/Activity",
       PLACEHOLDER: "Data Analysis Project",
       REQUIRED: true,
+      INSTRUCTION:
+        "give me a related project or activity that i could have done related to a work, e.g: Data Analysis Project, but not this one, it doesn't need to be about technology",
     },
     EXPLANATION: {
       KEY: "explanation" as const,
       LABEL: "Explanation",
       PLACEHOLDER: "Managed client communications; Delivered weekly reports;",
       REQUIRED: true,
+      INSTRUCTION:
+        "give me explanations for a project related to a work, each one separated by semicolon (;) , e.g: project name: Data Analysis Project, explanation: Managed client communications; Delivered weekly reports;, but not this ones, it doesn't need to be about technology. Don't give the name, just the explanations",
     },
     FROM: {
       KEY: "projectFrom" as const,
@@ -156,6 +207,7 @@ export const PROJECTS_FORM = {
       PLACEHOLDER: "June 2021",
       REQUIRED: false,
       TYPE: "date",
+      INSTRUCTION: "give me a date with this format: yyyy-MM-dd",
     },
     TO: {
       KEY: "projectTo" as const,
@@ -163,6 +215,7 @@ export const PROJECTS_FORM = {
       PLACEHOLDER: "August 2021",
       REQUIRED: false,
       TYPE: "date",
+      INSTRUCTION: "give me a date with this format: yyyy-MM-dd",
     },
   },
   TITLE: "Related Projects/Activities",
@@ -182,6 +235,8 @@ export const SKILLS_FORM = {
       LABEL: "Your Skill",
       PLACEHOLDER: "Project Management, English, Microsoft Excel, Traveling",
       REQUIRED: true,
+      INSTRUCTION:
+        "give me a list of skills, comma separated, e.g: Project Management, English, Microsoft Excel, Traveling, but not this ones, it doesn't need to be about technology. Always give at least 3",
     },
   },
   TITLE: "Skills",
@@ -198,6 +253,15 @@ export const SKILL_PLACEHOLDERS: Record<string, string[]> = {
   interests: ["Traveling", "Photography", "Reading", "Sports"],
 }
 
+export const SKILL_INSTRUCTIONS: Record<string, string> = {
+  technical:
+    "give me a list of skills, comma separated, e.g: Project Management, Data Analysis, Software Development, Problem Solving, but not this ones, it doesn't need to be about technology. Always give at least 3",
+  language:
+    "give me a list of languages, comma separated, e.g: Italian, German, but not these ones. Include both common and uncommon languages. Always give at least 3",
+  tool: "give me a list of tools or software, comma separated, e.g: Microsoft Excel, Photoshop, Salesforce, Google Analytics, but not these ones. Include both popular and specialized tools. Always give at least 3",
+  interests:
+    "give me a list of interests or hobbies, comma separated, e.g: Traveling, Photography, Reading, Sports, but not these ones. Include both common and unique interests. Always give at least 3",
+}
 export const CREATE_RESUME = {
   TITLE: "Your Resume Is Done",
   WARNING: "we recommend opening the file twice",
@@ -283,28 +347,11 @@ export const FORM_POSITION = {
 
 export const FORMS_AMOUNT = 6
 
-export const TITLE = "Generate Your Resume"
+export const HOME_TITLE = "Generate Your Resume"
+export const UPGRADE_TITLE = "Boost Your Resume With AI"
+export const ADVICE = "Upgrade to Pro to get AI generated responses"
 
 export const NAV_BUTTONS = {
   BACK: "Back",
   NEXT: "Next",
-}
-
-export const BASIC_INPUT_STYLE = {
-  fullWidth: true,
-  variant: "filled" as const,
-  color: "primary" as const,
-  sx: {
-    input: { color: "white" },
-    label: { color: "white" },
-    ".MuiFilledInput-root": {
-      backgroundColor: "#444",
-      "&:hover": {
-        backgroundColor: "#555",
-      },
-      "&.Mui-focused": {
-        backgroundColor: "#333",
-      },
-    },
-  },
 }

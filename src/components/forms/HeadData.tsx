@@ -1,5 +1,5 @@
 import { TextField } from "@mui/material"
-import { BASIC_INPUT_STYLE, FORM_POSITION, HEAD_DATA_FORM } from "@utils/consts"
+import { FORM_POSITION, HEAD_DATA_FORM } from "@utils/consts"
 import { formMovement } from "@utils/formMovement"
 
 import { handleFileChange, handleInputChange } from "@utils/updateForm"
@@ -9,8 +9,16 @@ import {
   useHeadData,
   useProgress,
 } from "@context/useFormContextHooks"
+import { getBasicInputStyle } from "@utils/getBasicInputStyle"
+import { useIsLight } from "@hooks/useIsLight"
+import Input from "@components/Input"
+import { HeadDataType } from "types"
 
 export default function HeadData() {
+  const isLight = useIsLight()
+
+  const basicInputStyle = getBasicInputStyle(isLight)
+
   const { progress } = useProgress()
   const { errors } = useErrors()
   const { setHeadDataForm, headDataForm } = useHeadData()
@@ -23,7 +31,8 @@ export default function HeadData() {
   return (
     <section className={`form ${translateClass} justify-center flex`}>
       <FormTitle text={HEAD_DATA_FORM.TITLE} />
-      <TextField
+
+      <Input<HeadDataType>
         aria-invalid="false"
         aria-describedby={HEAD_DATA_FORM.INPUTS.FULL_NAME.KEY}
         slotProps={slotProps}
@@ -31,17 +40,21 @@ export default function HeadData() {
         placeholder={HEAD_DATA_FORM.INPUTS.FULL_NAME.PLACEHOLDER}
         type="text"
         name={HEAD_DATA_FORM.INPUTS.FULL_NAME.KEY}
-        id={HEAD_DATA_FORM.INPUTS.FULL_NAME.KEY}
         label={HEAD_DATA_FORM.INPUTS.FULL_NAME.LABEL}
         autoComplete={HEAD_DATA_FORM.INPUTS.FULL_NAME.AUTOCOMPLETE}
-        required
+        required={HEAD_DATA_FORM.INPUTS.FULL_NAME.REQUIRED}
         error={!!errors.fullName}
         helperText={errors.fullName}
         onChange={(element) =>
           handleInputChange({ element, setter: setHeadDataForm })
         }
-        {...BASIC_INPUT_STYLE}
+        basicInputStyle={basicInputStyle}
+        value={headDataForm.fullName ?? ""}
+        previousValue={headDataForm.fullName ?? ""}
+        instruction={HEAD_DATA_FORM.INPUTS.FULL_NAME.INSTRUCTION}
+        setFormEntry={setHeadDataForm}
       />
+
       <TextField
         aria-invalid="false"
         aria-describedby={HEAD_DATA_FORM.INPUTS.PHOTO.KEY}
@@ -63,16 +76,16 @@ export default function HeadData() {
             setter: setHeadDataForm,
           })
         }
-        {...BASIC_INPUT_STYLE}
+        {...basicInputStyle}
         sx={{
           input: {
             marginTop: "1rem",
             cursor: "pointer",
-            ...BASIC_INPUT_STYLE.sx.input,
+            ...basicInputStyle.sx.input,
           },
-          label: { ...BASIC_INPUT_STYLE.sx.label },
+          label: { ...basicInputStyle.sx.label },
           ".MuiFilledInput-root": {
-            ...BASIC_INPUT_STYLE.sx[".MuiFilledInput-root"],
+            ...basicInputStyle.sx[".MuiFilledInput-root"],
           },
         }}
       />

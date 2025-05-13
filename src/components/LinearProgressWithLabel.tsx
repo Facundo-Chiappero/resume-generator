@@ -1,3 +1,4 @@
+import { useIsLight } from "@hooks/useIsLight"
 import {
   Box,
   LinearProgress,
@@ -8,6 +9,7 @@ import {
 export default function LinearProgressWithLabel(
   props: LinearProgressProps & { value: number }
 ) {
+  const isLight = useIsLight()
   return (
     <Box sx={{ display: "flex", alignItems: "center", width: "50%" }}>
       <Box sx={{ width: "100%", mr: 1 }}>
@@ -17,10 +19,11 @@ export default function LinearProgressWithLabel(
           sx={{
             height: 10,
             borderRadius: 5,
-            backgroundColor: "#444",
+            backgroundColor: isLight ? "#fff" : "#444",
             "& .MuiLinearProgress-bar": {
               backgroundColor: "#66ff66",
             },
+            border: "1px solid #1976d2",
           }}
         />
       </Box>

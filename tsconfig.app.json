@@ -29,6 +29,7 @@
       "@context/*": ["src/context/*"],
       "@schema/*": ["src/schema/*"],
       "@hooks/*": ["src/hooks/*"],
+      "@pages/*": ["src/pages/*"],
       "@types": ["types.d"]
     }
   },

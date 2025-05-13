@@ -17,7 +17,7 @@ export default function Education() {
 
   const { progress } = useProgress()
 
-  const { setEducationForm } = useEducation()
+  const { setEducationForm, educationForm } = useEducation()
 
   const { translateClass, slotProps } = formMovement({
     progress,
@@ -63,6 +63,7 @@ export default function Education() {
           schema={singleEducationSchema}
           config={EDUCATION_FORM}
           slotProps={slotProps}
+          previousValue={educationForm}
         />
       )}
     </section>

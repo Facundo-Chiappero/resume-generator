@@ -21,7 +21,7 @@ export default function GenericList<T>({
       {data.map((item, index) => (
         <li
           key={index}
-          className="flex w-full justify-between border-2 border-dark-text-primary p-4 rounded-xl"
+          className="flex w-full justify-between border-2 border-light-text-primary dark:border-dark-text-primary p-4 rounded-xl"
         >
           {renderItem(item)}
           <aside>
