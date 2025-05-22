@@ -166,7 +166,7 @@ export const createResumePdf = async ({
         columns: [
           { text: exp.role, bold: true, width: "60%" },
           {
-            text: `${exp.from} - ${exp.to}`,
+            text: exp.from && exp.to ? `${exp.from} - ${exp.to}` : "",
             bold: true,
             alignment: "right",
             width: "40%",

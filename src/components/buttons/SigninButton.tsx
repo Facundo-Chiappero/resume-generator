@@ -1,14 +1,19 @@
 import { SignInButton as ClerkButton } from "@clerk/clerk-react"
+import { ButtonHTMLAttributes } from "react"
 
 // Envuelve tu botón con ClerkSignInButton en tu componente
-export default function SignInButton() {
+export default function SignInButton({
+  text = "Sign In",
+  ...props
+}: { text?: string } & ButtonHTMLAttributes<HTMLElement>) {
   return (
     <ClerkButton
       mode="modal"
       children={
         <button
+          {...props}
           type="button"
-          className="
+          className={`
           w-fit inline-flex items-center justify-center
           px-3 py-1.5 mr-2
           font-medium text-[0.8125rem] leading-[1.38462]
@@ -25,9 +30,11 @@ export default function SignInButton() {
           before:-z-10
 
           focus:outline-2 focus:outline-violet-500 focus-visible:outline-violet-500
-        "
+
+          
+          `}
         >
-          Sign In
+          {text}
         </button>
       }
     />

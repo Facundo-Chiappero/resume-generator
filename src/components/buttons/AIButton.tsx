@@ -1,7 +1,7 @@
-import { SignedIn } from "@clerk/clerk-react"
 import { useIsPro } from "@hooks/useIsPro"
 import CreateIcon from "@mui/icons-material/Create"
 import { getSuggestion } from "@utils/getSuggestion"
+import { toast } from "react-toastify"
 
 type Props<T> = {
   setLoading: React.Dispatch<React.SetStateAction<boolean>>
@@ -27,8 +27,15 @@ export default function AIButton<T>({
   ) => {
     setLoading(true)
     const suggestion = await getSuggestion({
-      instruction: `I have this text: "${previousValue}". Please improve its formatting, correct spelling errors, and ensure proper capitalization and punctuation while preserving the original content. Follow this specific guidance: ${instruction}. Important: DO NOT replace it with unrelated content - only enhance what's already there.`,
+      instruction: `I have this text: "${previousValue}". Please improve its formatting, correct spelling errors, and ensure proper capitalization and punctuation while preserving the original content. Follow this specific guidance: ${instruction}. Important: DO NOT replace it with unrelated content - only enhance what's already there. If be any perchance i do not provide a text you can make it up`,
     })
+
+    if (suggestion.status !== 200) {
+      toast.error(suggestion.message)
+      setLoading(false)
+
+      return
+    }
 
     setFormEntry((prev: T) => ({
       ...prev,
@@ -38,7 +45,7 @@ export default function AIButton<T>({
   }
 
   return (
-    <SignedIn>
+    <>
       <button
         className="absolute top-3.5 right-3"
         type="button"
@@ -47,6 +54,6 @@ export default function AIButton<T>({
       >
         <CreateIcon />
       </button>
-    </SignedIn>
+    </>
   )
 }

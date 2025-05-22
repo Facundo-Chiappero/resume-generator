@@ -1,5 +1,5 @@
 import { TextField, TextFieldProps } from "@mui/material"
-import AIButton from "./AIButton"
+import AIButton from "./buttons/AIButton"
 import { ChangeEvent, useState } from "react"
 import Loading from "./Loading"
 

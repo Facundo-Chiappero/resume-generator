@@ -3,7 +3,7 @@ import { ExperienceType } from "@types"
 
 import { formMovement } from "@utils/formMovement"
 import { BUTTON_LABEL, EXPERIENCE_FORM, FORM_POSITION } from "@utils/consts"
-import AddButton from "@components/AddButton"
+import AddButton from "@components/buttons/AddButton"
 import GenericEntityForm from "@components/template/GenericEntityForm"
 import GenericEntityList from "@components/template/GenericEntityList"
 import { handleDelete, handleEdit } from "@utils/formHandlers"

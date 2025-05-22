@@ -1,5 +1,5 @@
 import { Button } from "@mui/material"
-import LinearProgressWithLabel from "./LinearProgressWithLabel"
+import LinearProgressWithLabel from "../LinearProgressWithLabel"
 import { FORMS_AMOUNT, NAV_BUTTONS } from "@utils/consts"
 import { useHandleNext } from "@hooks/useHandleNext"
 import { useProgress } from "@context/useFormContextHooks"

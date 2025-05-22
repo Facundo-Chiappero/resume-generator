@@ -1,19 +1,20 @@
 export async function getSuggestion({ instruction }: { instruction: string }) {
-  return fetch(`${import.meta.env.VITE_BACKEND_URL}/useAI`, {
-    body: JSON.stringify({
-      instruction,
-    }),
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      return data
+  try {
+    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/useAI`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ instruction }),
     })
-    .catch((err) => {
-      console.log(err)
-      return "There was an error"
-    })
+
+    if (!response.ok)
+      throw new Error("There was an error while getting suggestion")
+
+    const data = await response.json()
+    return { status: 200, message: data.message }
+  } catch (err) {
+    if (err instanceof Error) return { status: 400, message: err.message }
+    return { status: 400, message: "Unexpected error" }
+  }
 }

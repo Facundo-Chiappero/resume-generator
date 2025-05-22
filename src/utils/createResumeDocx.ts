@@ -35,7 +35,7 @@ const toBase64 = (file: File): Promise<string> =>
     reader.onerror = (error) => reject(error)
   })
 
-export const createResumeWord = async ({
+export const createResumeDocx = async ({
   headDataForm,
   personalDataForm,
   educationForm,
@@ -155,6 +155,7 @@ export const createResumeWord = async ({
     )
 
     experienceForm.forEach((exp) => {
+      const fromTo = exp.from && exp.to ? `${exp.from} - ${exp.to}` : ""
       children.push(
         new Paragraph({
           children: [
@@ -167,7 +168,7 @@ export const createResumeWord = async ({
           children: [
             new TextRun({ text: exp.role, bold: true }),
             new TextRun("  "),
-            new TextRun({ text: `${exp.from} - ${exp.to}`, bold: true }),
+            new TextRun({ text: fromTo, bold: true }),
           ],
         })
       )

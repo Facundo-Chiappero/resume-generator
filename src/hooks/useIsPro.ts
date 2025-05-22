@@ -1,10 +1,8 @@
-import { useAuth } from "@clerk/clerk-react"
+import { useUser } from "@clerk/clerk-react"
+import { useGetUserPlan } from "./useGetUserPlan"
 
 export function useIsPro() {
-  const { has } = useAuth()
-  // those operators are used in case that has is not loaded
-  // when that happens the returned value is false
-  const hasPremiumAccess = (has && has({ plan: "pro" })) || false
-
-  return hasPremiumAccess
+  const { user } = useUser()
+  const { currentPlan } = useGetUserPlan({ userId: user?.id })
+  return currentPlan === "Pro"
 }

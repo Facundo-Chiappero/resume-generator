@@ -18,15 +18,15 @@ export const singleExperienceSchema = z
 
     [EXPERIENCE_FORM.INPUTS.FROM.KEY]: z
       .string()
-      .min(1, { message: ERROR.EXPERIENCE.FROM_REQUIRED })
-      .refine((val) => !isNaN(Date.parse(val)), {
+      .optional()
+      .refine((val) => !val || !isNaN(Date.parse(val)), {
         message: ERROR.EXPERIENCE.INVALID_FROM_DATE,
       }),
 
     [EXPERIENCE_FORM.INPUTS.TO.KEY]: z
       .string()
-      .min(1, { message: ERROR.EXPERIENCE.TO_REQUIRED })
-      .refine((val) => !isNaN(Date.parse(val)), {
+      .optional()
+      .refine((val) => !val || !isNaN(Date.parse(val)), {
         message: ERROR.EXPERIENCE.INVALID_TO_DATE,
       }),
 
@@ -37,9 +37,20 @@ export const singleExperienceSchema = z
         message: ERROR.EXPERIENCE.SPLIT_TASKS,
       }),
   })
-  .refine((data) => new Date(data.from) <= new Date(data.to), {
-    path: [EXPERIENCE_FORM.INPUTS.FROM.KEY],
-    message: ERROR.EXPERIENCE.FROM_BEFORE_TO,
-  })
+  .refine(
+    (data) => {
+      const from = data[EXPERIENCE_FORM.INPUTS.FROM.KEY]
+      const to = data[EXPERIENCE_FORM.INPUTS.TO.KEY]
+
+      if ((from && !to) || (!from && to)) return false
+      if (from && to) return new Date(from) <= new Date(to)
+
+      return true
+    },
+    {
+      path: [EXPERIENCE_FORM.INPUTS.FROM.KEY],
+      message: ERROR.EXPERIENCE.FROM_BEFORE_TO,
+    }
+  )
 
 export const experienceSchema = z.array(singleExperienceSchema)

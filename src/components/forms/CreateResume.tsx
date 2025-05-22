@@ -2,7 +2,6 @@ import { Button } from "@mui/material"
 import { BUTTON_LABEL, CREATE_RESUME, FORM_POSITION } from "@utils/consts"
 import { formMovement } from "@utils/formMovement"
 import { createResumePdf } from "@utils/createResumePdf"
-import { createResumeWord } from "@utils/createResumeWord"
 import FormTitle from "@components/FormTitle"
 import {
   useEducation,
@@ -14,6 +13,7 @@ import {
   useSkills,
 } from "@context/useFormContextHooks"
 import { useIsLight } from "@hooks/useIsLight"
+import { createResumeDocx } from "@utils/createResumeDocx"
 
 export default function CreateResume() {
   const isLight = useIsLight()
@@ -64,7 +64,7 @@ export default function CreateResume() {
         aria-label={BUTTON_LABEL.DOWNLOAD_WORD}
         onClick={() => {
           alert(CREATE_RESUME.WARNING)
-          createResumeWord({
+          createResumeDocx({
             headDataForm,
             personalDataForm,
             educationForm,

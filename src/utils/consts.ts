@@ -160,7 +160,7 @@ export const EXPERIENCE_FORM = {
       KEY: "from" as const,
       LABEL: "Start Date",
       PLACEHOLDER: "June 2021",
-      REQUIRED: true,
+      REQUIRED: false,
       TYPE: "date",
       INSTRUCTION: "give me a date with this format: yyyy-MM-dd",
     },
@@ -168,7 +168,7 @@ export const EXPERIENCE_FORM = {
       KEY: "to" as const,
       LABEL: "End Date",
       PLACEHOLDER: "August 2021",
-      REQUIRED: true,
+      REQUIRED: false,
       TYPE: "date",
       INSTRUCTION: "give me a date with this format: yyyy-MM-dd",
     },
@@ -349,8 +349,11 @@ export const FORMS_AMOUNT = 6
 
 export const HOME_TITLE = "Generate Your Resume"
 export const UPGRADE_TITLE = "Boost Your Resume With AI"
-export const ADVICE = "Upgrade to Pro to get AI generated responses"
-
+// export const ADVICE = "Upgrade to Pro to get AI generated responses"
+export const ADVICE = {
+  PART1: "Unlock AI-powered resume generation.",
+  PART2: "Upgrade to Pro to get started!",
+}
 export const NAV_BUTTONS = {
   BACK: "Back",
   NEXT: "Next",

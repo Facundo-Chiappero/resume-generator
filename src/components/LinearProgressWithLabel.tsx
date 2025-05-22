@@ -11,7 +11,14 @@ export default function LinearProgressWithLabel(
 ) {
   const isLight = useIsLight()
   return (
-    <Box sx={{ display: "flex", alignItems: "center", width: "50%" }}>
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        width: "50%",
+        marginInline: ".5rem",
+      }}
+    >
       <Box sx={{ width: "100%", mr: 1 }}>
         <LinearProgress
           variant="determinate"
