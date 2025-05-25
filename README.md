@@ -164,7 +164,3 @@ Este proyecto utiliza una **licencia personalizada de uso no comercial**:
 Si tienes preguntas o comentarios, no dudes en abrir un issue o ponerte en contacto.
 
 ---
-
-facundochiappero.online
-
-backend en replit: https://replit.com/@facundochiapper/resume-generator
