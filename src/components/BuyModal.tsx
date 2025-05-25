@@ -27,7 +27,7 @@ export default function BuyModal({
       onClick={() => setIsOpen(!isOpen)}
     >
       <div
-        className="p-6 mx-4 bg-light-background-primary dark:bg-dark-background-secondary rounded-xl min-w-64 w-full max-w-[500px] shadow-lg relative"
+        className="p-4 pb-6 mx-4 bg-light-background-primary dark:bg-dark-background-secondary rounded-xl min-w-64 w-full max-w-[500px] shadow-lg relative"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -49,7 +49,7 @@ export default function BuyModal({
             </p>
           </div>
 
-          <div className="flex justify-center items-center py-4 bg-dark-background-tertiary rounded-lg">
+          <div className="flex flex-col justify-center items-center p-4 bg-dark-background-tertiary rounded-lg">
             <PayPalButton name={name} price={price} userId={userId} />
           </div>
         </section>

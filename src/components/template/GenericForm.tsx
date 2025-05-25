@@ -10,7 +10,7 @@ import {
   FormHelperText,
 } from "@mui/material"
 import { BUTTON_LABEL } from "@utils/consts"
-import { handleChange, handleSubmit } from "@utils/formHandlers"
+import { handleChange, handleSubmit } from "@utils/form/formHandlers"
 import { getBasicInputStyle } from "@utils/getBasicInputStyle"
 import { useState } from "react"
 import { ZodSchema } from "zod"

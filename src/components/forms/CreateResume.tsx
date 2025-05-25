@@ -1,7 +1,7 @@
 import { Button } from "@mui/material"
 import { BUTTON_LABEL, CREATE_RESUME, FORM_POSITION } from "@utils/consts"
-import { formMovement } from "@utils/formMovement"
-import { createResumePdf } from "@utils/createResumePdf"
+import { formMovement } from "@utils/form/formMovement"
+import { createResumePdf } from "@utils/file/createResumePdf"
 import FormTitle from "@components/FormTitle"
 import {
   useEducation,
@@ -13,7 +13,7 @@ import {
   useSkills,
 } from "@context/useFormContextHooks"
 import { useIsLight } from "@hooks/useIsLight"
-import { createResumeDocx } from "@utils/createResumeDocx"
+import { createResumeDocx } from "@utils/file/createResumeDocx"
 
 export default function CreateResume() {
   const isLight = useIsLight()

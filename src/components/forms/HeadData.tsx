@@ -1,8 +1,8 @@
 import { TextField } from "@mui/material"
 import { FORM_POSITION, HEAD_DATA_FORM } from "@utils/consts"
-import { formMovement } from "@utils/formMovement"
+import { formMovement } from "@utils/form/formMovement"
 
-import { handleFileChange, handleInputChange } from "@utils/updateForm"
+import { handleFileChange, handleInputChange } from "@utils/form/updateForm"
 import FormTitle from "@components/FormTitle"
 import {
   useErrors,

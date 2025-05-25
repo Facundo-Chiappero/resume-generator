@@ -18,9 +18,10 @@ router.post("/", async (req: Request, res: Response) => {
       res.status(404).json({ message: "plan not found" })
       return
     }
+
     res.status(200).json({ plan: userPlan.planId })
   } catch (err) {
-    console.log(err)
+    console.error(err)
     res.status(400).json({ message: "there was an error" })
   }
 

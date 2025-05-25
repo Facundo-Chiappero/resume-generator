@@ -1,10 +1,10 @@
 import { useState } from "react"
 
-import { formMovement } from "@utils/formMovement"
+import { formMovement } from "@utils/form/formMovement"
 import { BUTTON_LABEL, FORM_POSITION, PROJECTS_FORM } from "@utils/consts"
 import AddButton from "@components/buttons/AddButton"
 import GenericEntityList from "@components/template/GenericEntityList"
-import { handleDelete, handleEdit } from "@utils/formHandlers"
+import { handleDelete, handleEdit } from "@utils/form/formHandlers"
 import GenericEntityForm from "@components/template/GenericEntityForm"
 import { ProjectType } from "types"
 import { singleProjectSchema } from "@schema/project"

@@ -15,7 +15,6 @@ let dbInstance: ReturnType<typeof client.db> | null = null
 export async function connectToDatabase() {
   if (!dbInstance) {
     await client.connect()
-    console.log("Connected to MongoDB")
     dbInstance = client.db("resume_generator")
   }
 }

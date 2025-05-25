@@ -17,7 +17,9 @@ export function useGetUserPlan({ userId }: { userId: string | undefined }) {
           userId: userId,
         }),
       })
+
       const data = await res.json()
+
       if (res.ok) setCurrentPlan((await data.plan).replace(/"/g, ""))
     })()
   }, [userId])

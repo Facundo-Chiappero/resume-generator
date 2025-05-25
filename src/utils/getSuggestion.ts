@@ -31,8 +31,6 @@ export async function getSuggestion({
 
     const data = await response.json()
 
-    console.log(data)
-
     // used to avoid having a response like GPA: 5/10
     if (/gpa\s*:?\s*/i.test(instruction)) {
       data.message = data.message.replace(/gpa\s*:?\s*/i, "")

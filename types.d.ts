@@ -1,3 +1,19 @@
+// paypal
+import type { OrderResponseBody } from "@paypal/paypal-js"
+
+export type PayPalButtonProps = {
+  name: string
+  price: string
+  userId: string | undefined
+}
+type handlePaymentSuccessProps = {
+  details: OrderResponseBody
+  name: string
+  price: string
+  userId: string
+}
+
+// backend
 export type UseAIRequestBodyType = {
   instruction: string
   headDataForm: HeadDataType
@@ -8,6 +24,7 @@ export type UseAIRequestBodyType = {
   skillsForm: SkillsType[]
 }
 
+// forms
 export type HeadDataType = {
   fullName: string
   photo: File | null

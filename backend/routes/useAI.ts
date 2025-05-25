@@ -37,7 +37,7 @@ router.post("/", async (req, res) => {
     res.status(200).json({ message: text })
     return
   } catch (error) {
-    console.log(error)
+    console.error(error)
     res
       .status(400)
       .json({ message: "There was an error while getting suggestion" })

@@ -1,6 +1,6 @@
-import { formMovement } from "@utils/formMovement"
+import { formMovement } from "@utils/form/formMovement"
 import { FORM_POSITION, PERSONAL_DATA_FORM } from "@utils/consts"
-import { handleInputChange } from "@utils/updateForm"
+import { handleInputChange } from "@utils/form/updateForm"
 import FormTitle from "@components/FormTitle"
 import {
   useErrors,
