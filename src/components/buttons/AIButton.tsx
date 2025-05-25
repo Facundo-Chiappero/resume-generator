@@ -8,7 +8,7 @@ import {
 } from "@context/useFormContextHooks"
 import { useIsPro } from "@hooks/useIsPro"
 import CreateIcon from "@mui/icons-material/Create"
-import { getSuggestion } from "@utils/getSuggestion"
+import { getSuggestion } from "@utils/inputField/getSuggestion"
 import { toast } from "react-toastify"
 
 type Props<T> = {

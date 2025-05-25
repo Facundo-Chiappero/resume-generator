@@ -1,5 +1,5 @@
 import { z } from "zod"
-import { checkMagicBytes } from "@utils/checkMagicBytes"
+import { checkMagicBytes } from "@utils/inputField/checkMagicBytes"
 import { ERROR, HEAD_DATA_FORM } from "@utils/consts"
 const photoRegex = /\.(jpg|jpeg|png|webp)$/i
 const nameRegex = /^[\p{L}\s'-]+$/u

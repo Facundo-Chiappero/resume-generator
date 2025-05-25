@@ -7,7 +7,7 @@ import {
   usePersonalData,
   useProgress,
 } from "@context/useFormContextHooks"
-import { getBasicInputStyle } from "@utils/getBasicInputStyle"
+import { getBasicInputStyle } from "@utils/inputField/getBasicInputStyle"
 import { useIsLight } from "@hooks/useIsLight"
 import Input from "@components/Input"
 import { PersonalDataType } from "types"
