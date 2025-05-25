@@ -18,7 +18,7 @@ export default function Skills() {
 
   const { progress } = useProgress()
 
-  const { setSkillsForm } = useSkills()
+  const { setSkillsForm, skillsForm } = useSkills()
 
   const { translateClass, slotProps } = formMovement({
     progress,
@@ -64,6 +64,7 @@ export default function Skills() {
           schema={skillSchema}
           config={SKILLS_FORM}
           slotProps={slotProps}
+          previousValue={skillsForm}
         />
       )}
     </section>

@@ -40,8 +40,6 @@ const handlePaymentSuccess = async ({
   price,
   userId,
 }: handlePaymentSuccessProps): Promise<void> => {
-  console.log("btn responde")
-
   try {
     const response = await fetch(
       `${import.meta.env.VITE_BACKEND_URL}/paypalPayment`,
@@ -106,7 +104,7 @@ export default function PayPalButton({
             return actions.order.capture().then((rawDetails) => {
               const details = rawDetails as PayPalCaptureDetails
               if (!details?.id || !details?.payer?.email_address) {
-                console.error("Invalid PayPal capture response", details)
+                toast.error("Invalid PayPal capture response")
                 return
               }
 

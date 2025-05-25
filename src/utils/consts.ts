@@ -12,7 +12,6 @@ export const NAVIGATION = {
     POPSTATE: "popstate" as const,
   },
 }
-
 export const HEAD_DATA_FORM = {
   INPUTS: {
     FULL_NAME: {
@@ -39,7 +38,7 @@ export const PERSONAL_DATA_FORM = {
       REQUIRED: true,
       AUTOCOMPLETE: "address-level2",
       INSTRUCTION:
-        "give me a address level 2 from any part of the world, e.g: Austin, Texas, USA, but not this one",
+        'Provide a valid example of an address at the administrative level 2 (typically city or municipality) from anywhere in the world, excluding "Austin, Texas, USA". Format it as "City, State/Province, Country"',
     },
     EMAIL: {
       KEY: "email" as const,
@@ -48,7 +47,7 @@ export const PERSONAL_DATA_FORM = {
       REQUIRED: true,
       AUTOCOMPLETE: "email",
       INSTRUCTION:
-        "give me an example email direction, e.g: johndoe@example.com, but not this one",
+        'Provide a valid example of an email address different from "johndoe@example.com". Format it as a standard email (e.g., username@domain.com).',
     },
     ADDRESS: {
       KEY: "address" as const,
@@ -57,7 +56,7 @@ export const PERSONAL_DATA_FORM = {
       REQUIRED: false,
       AUTOCOMPLETE: "street-address",
       INSTRUCTION:
-        "give me a street address from any part of the world, e.g: 1234 Elm Street, Apartment 56, but not this one",
+        'Provide a valid example of a street address from anywhere in the world, excluding "1234 Elm Street, Apartment 56". Include street number, street name, and any secondary address info if applicable.',
     },
     PHONE: {
       KEY: "phone" as const,
@@ -66,7 +65,7 @@ export const PERSONAL_DATA_FORM = {
       REQUIRED: false,
       AUTOCOMPLETE: "tel",
       INSTRUCTION:
-        "give me a phone number from any part of the world, e.g: +1 800 555 1212, but not this one",
+        'Provide a valid phone number from anywhere in the world, excluding "+1 800 555 1212". Include country code and number, formatted with spaces or dashes.',
     },
   },
   TITLE: "Personal Information",
@@ -80,7 +79,7 @@ export const EDUCATION_FORM = {
       REQUIRED: true,
       AUTOCOMPLETE: "organization",
       INSTRUCTION:
-        "give me the name of a college from any part of the world, e.g: Harvard University, but not this one.",
+        'Provide a valid example of an organization name from anywhere in the world. The organization must be a university, college, or any similar organization. Do not use "Harvard University". Include the full official name, spelled correctly.',
     },
     LOCATION: {
       KEY: "educationLocation" as const,
@@ -89,7 +88,7 @@ export const EDUCATION_FORM = {
       REQUIRED: true,
       AUTOCOMPLETE: "address-level2",
       INSTRUCTION:
-        "give me location from any part of the world, e.g: Cambridge, MA, USA, but not this one. Ensure to give the state too and not only the country",
+        'Provide a valid example of an address-level 2 location (city or municipality) from anywhere in the world, excluding "Cambridge, MA, USA". Include the city, state or province, and country. Do not provide only the country.',
     },
     YEAR: {
       KEY: "year" as const,
@@ -98,7 +97,7 @@ export const EDUCATION_FORM = {
       REQUIRED: true,
       AUTOCOMPLETE: "bday-year",
       INSTRUCTION:
-        "give me a year, the year could be any year from 1990 to 2024",
+        "Provide a valid year as a four-digit number between 1990 and 2024.",
     },
     GPA: {
       KEY: "gpa" as const,
@@ -106,7 +105,7 @@ export const EDUCATION_FORM = {
       PLACEHOLDER: "3.9/4",
       REQUIRED: false,
       INSTRUCTION:
-        "Generate a random GPA in the format 'x/y' where x is a score (whole or decimal number) and y is the maximum possible score (whole number). Example: '7.5/10' or '3/5'. Must include both numbers with a slash between them.",
+        'Generate a random GPA in the format "x/y" where x is a whole or decimal number representing the score, and y is a whole number representing the maximum possible score. Include both numbers separated by a slash. Examples: "3.9/4", "7.5/10", or "80/100".',
     },
     THESIS: {
       KEY: "thesis" as const,
@@ -114,7 +113,7 @@ export const EDUCATION_FORM = {
       PLACEHOLDER: "AI for Social Good: Predictive Modeling in Public Health",
       REQUIRED: false,
       INSTRUCTION:
-        "give me a title for a thesis, e.g: AI for Social Good: Predictive Modeling in Public Health, but not this one, it doesn't need to be about technology",
+        'Provide a title for a thesis or highlighted project. The title can be from any academic field or topic, not necessarily technology. Do not use "AI for Social Good: Predictive Modeling in Public Health" or any variation of it. The title should be clear and descriptive.',
     },
     RELATED_SUBJECTS: {
       KEY: "relatedSubjects" as const,
@@ -122,7 +121,7 @@ export const EDUCATION_FORM = {
       PLACEHOLDER: "Machine Learning, Ethics in AI, Data Science",
       REQUIRED: false,
       INSTRUCTION:
-        "give me a related subject that i could take while in college, related to a work, e.g: Machine Learning, Ethics in AI, Data Science, but not this ones, it doesn't need to be about technology",
+        'Provide a list of related college subjects or courses relevant to a field of work. The subjects can be from any discipline and do not have to be technology-related. Do not use "Machine Learning," "Ethics in AI," or "Data Science." List at least two or three subjects, separated by commas.',
     },
   },
   TITLE: "Studies",
@@ -136,7 +135,7 @@ export const EXPERIENCE_FORM = {
       REQUIRED: true,
       AUTOCOMPLETE: "organization",
       INSTRUCTION:
-        "give me the name of a company from any part of the world, e.g: Google LLC, but not this ones, it doesn't need to be about technology",
+        'Provide the name of a company or organization from anywhere in the world. It can be from any industry or sector, not limited to technology. Do not use "Google LLC" or any variation of it. The name should be the full official name, spelled correctly.',
     },
     ROLE: {
       KEY: "role" as const,
@@ -145,7 +144,7 @@ export const EXPERIENCE_FORM = {
       REQUIRED: true,
       AUTOCOMPLETE: "organization-title",
       INSTRUCTION:
-        "give me a position or role in a company, e.g: Software Engineering Intern, but not this ones, it doesn't need to be about technology",
+        'Provide a job position or role within a company or organization. The role can be from any industry or department and does not need to be technology-related. Do not use "Software Engineering Intern" or any variation of it. The response should be clear and include the job title.',
     },
     EXPERIENCE_LOCATION: {
       KEY: "experienceLocation" as const,
@@ -154,7 +153,7 @@ export const EXPERIENCE_FORM = {
       REQUIRED: true,
       AUTOCOMPLETE: "address-level2",
       INSTRUCTION:
-        "give me a location from any part of the world, e.g: Mountain View, CA, USA, but not this one",
+        'Provide a valid address-level 2 location (city or municipality) from anywhere in the world, excluding "Mountain View, CA, USA". Include city, state or province, and country.',
     },
     FROM: {
       KEY: "from" as const,
@@ -162,7 +161,7 @@ export const EXPERIENCE_FORM = {
       PLACEHOLDER: "June 2021",
       REQUIRED: false,
       TYPE: "date",
-      INSTRUCTION: "give me a date with this format: yyyy-MM-dd",
+      INSTRUCTION: 'Provide a date in the format "yyyy-MM-dd".',
     },
     TO: {
       KEY: "to" as const,
@@ -170,7 +169,7 @@ export const EXPERIENCE_FORM = {
       PLACEHOLDER: "August 2021",
       REQUIRED: false,
       TYPE: "date",
-      INSTRUCTION: "give me a date with this format: yyyy-MM-dd",
+      INSTRUCTION: 'Provide a date in the format "yyyy-MM-dd".',
     },
     TASKS: {
       KEY: "tasks" as const,
@@ -178,7 +177,7 @@ export const EXPERIENCE_FORM = {
       PLACEHOLDER: "Improved project tracking system; Created clear workflows;",
       REQUIRED: true,
       INSTRUCTION:
-        "give me a list of tasks i could have done while working, each one separated by semicolon (;), e.g: Improved project tracking system; Created clear workflows;, but not this ones, it doesn't need to be about technology. Always give at least 3",
+        'Provide a list of tasks or achievements that could be done while working, each separated by a semicolon (;). The tasks do not need to be technology-related. Always include at least three tasks or achievements. Do not use "Improved project tracking system; Created clear workflows;" or any variation of it.',
     },
   },
   TITLE: "Working Experience",
@@ -191,7 +190,7 @@ export const PROJECTS_FORM = {
       PLACEHOLDER: "Data Analysis Project",
       REQUIRED: true,
       INSTRUCTION:
-        "give me a related project or activity that i could have done related to a work, e.g: Data Analysis Project, but not this one, it doesn't need to be about technology",
+        'Provide the name of a project or activity related to a type of work. The project can be from any field and does not need to be technology-related. Do not use "Data Analysis Project" or any variation of it. The name should be clear and descriptive.',
     },
     EXPLANATION: {
       KEY: "explanation" as const,
@@ -199,7 +198,7 @@ export const PROJECTS_FORM = {
       PLACEHOLDER: "Managed client communications; Delivered weekly reports;",
       REQUIRED: true,
       INSTRUCTION:
-        "give me explanations for a project related to a work, each one separated by semicolon (;) , e.g: project name: Data Analysis Project, explanation: Managed client communications; Delivered weekly reports;, but not this ones, it doesn't need to be about technology. Don't give the name, just the explanations",
+        'Provide a list of explanations for a project related to a type of work, each separated by a semicolon (;). The explanations should describe tasks or activities done during the project and do not need to be technology-related. Do not use "Managed client communications; Delivered weekly reports;" or any variation of it. Do not include the project name, just the explanations.',
     },
     FROM: {
       KEY: "projectFrom" as const,
@@ -207,7 +206,7 @@ export const PROJECTS_FORM = {
       PLACEHOLDER: "June 2021",
       REQUIRED: false,
       TYPE: "date",
-      INSTRUCTION: "give me a date with this format: yyyy-MM-dd",
+      INSTRUCTION: 'Provide a date in the format "yyyy-MM-dd".',
     },
     TO: {
       KEY: "projectTo" as const,
@@ -215,7 +214,7 @@ export const PROJECTS_FORM = {
       PLACEHOLDER: "August 2021",
       REQUIRED: false,
       TYPE: "date",
-      INSTRUCTION: "give me a date with this format: yyyy-MM-dd",
+      INSTRUCTION: 'Provide a date in the format "yyyy-MM-dd".',
     },
   },
   TITLE: "Related Projects/Activities",
@@ -236,7 +235,7 @@ export const SKILLS_FORM = {
       PLACEHOLDER: "Project Management, English, Microsoft Excel, Traveling",
       REQUIRED: true,
       INSTRUCTION:
-        "give me a list of skills, comma separated, e.g: Project Management, English, Microsoft Excel, Traveling, but not this ones, it doesn't need to be about technology. Always give at least 3",
+        'Provide a list of skills, comma-separated. The skills can be from any field and do not need to be technology-related. Always include at least three skills. Do not use "Project Management, English, Microsoft Excel, Traveling" or any variation of it.',
     },
   },
   TITLE: "Skills",
@@ -252,21 +251,19 @@ export const SKILL_PLACEHOLDERS: Record<string, string[]> = {
   tool: ["Microsoft Excel", "Photoshop", "Salesforce", "Google Analytics"],
   interests: ["Traveling", "Photography", "Reading", "Sports"],
 }
-
 export const SKILL_INSTRUCTIONS: Record<string, string> = {
   technical:
-    "give me a list of skills, comma separated, e.g: Project Management, Data Analysis, Software Development, Problem Solving, but not this ones, it doesn't need to be about technology. Always give at least 3",
+    'Provide a list of technical skills, comma-separated. The skills can be from any field and do not need to be technology-related. Always include at least three skills. Do not use "Project Management, Data Analysis, Software Development, Problem Solving" or any variation of it.',
   language:
-    "give me a list of languages, comma separated, e.g: Italian, German, but not these ones. Include both common and uncommon languages. Always give at least 3",
-  tool: "give me a list of tools or software, comma separated, e.g: Microsoft Excel, Photoshop, Salesforce, Google Analytics, but not these ones. Include both popular and specialized tools. Always give at least 3",
+    'Provide a list of languages, comma-separated. Include both common and uncommon languages. Always include at least three languages. Do not use "Italian, German" or any variation of these.',
+  tool: 'Provide a list of languages, comma-separated. Include both common and uncommon languages. Always include at least three languages. Do not use "Italian, German" or any variation of these.',
   interests:
-    "give me a list of interests or hobbies, comma separated, e.g: Traveling, Photography, Reading, Sports, but not these ones. Include both common and unique interests. Always give at least 3",
+    'Provide a list of interests or hobbies, comma-separated. Include both common and unique interests. Always include at least three. Do not use "Traveling, Photography, Reading, Sports" or any variation of these.',
 }
 export const CREATE_RESUME = {
   TITLE: "Your Resume Is Done",
   WARNING: "we recommend opening the file twice",
 }
-
 export const BUTTON_LABEL = {
   SAVE: "Save",
   CANCEL: "Cancel",
@@ -277,7 +274,6 @@ export const BUTTON_LABEL = {
   DOWNLOAD_PDF: "Download PDF",
   DOWNLOAD_WORD: "Download Word less recommended",
 }
-
 export const ERROR = {
   HEAD_DATA: {
     SHORT: "Full name must have at least 2 characters.",
@@ -316,13 +312,13 @@ export const ERROR = {
     FROM_BEFORE_TO: "Start date must be before end date.",
     INVALID_FROM_DATE: "Invalid start date",
     INVALID_TO_DATE: "Invalid finish date",
-    SPLIT_TASKS: 'Tasks must be separated using semicolon ";"',
+    SPLIT_TASKS: "Tasks must be separated using semicolon ';'",
     FROM_NOT_IN_FUTURE: "Start date cannot be in the future",
   },
   PROJECT: {
     TITLE_REQUIRED: "Title is required.",
     EXPLANATION_SEPARATOR_REQUIRED:
-      'Explanation must include at least one semicolon ";" to separate items.',
+      "Explanation must include at least one semicolon ';' to separate items.",
     EXPLANATION_MIN_ITEMS: "Please provide at least two explanation items.",
     INVALID_FROM_DATE: "Start date is not valid.",
     INVALID_TO_DATE: "End date is not valid.",
@@ -334,7 +330,6 @@ export const ERROR = {
     SKILL: "Skill is required",
   },
 }
-
 export const FORM_POSITION = {
   HEAD_DATA: 0,
   PERSONAL_DATA: 1,
@@ -344,12 +339,9 @@ export const FORM_POSITION = {
   SKILLS: 5,
   CREATE_RESUME: 6,
 }
-
 export const FORMS_AMOUNT = 6
-
 export const HOME_TITLE = "Generate Your Resume"
 export const UPGRADE_TITLE = "Boost Your Resume With AI"
-// export const ADVICE = "Upgrade to Pro to get AI generated responses"
 export const ADVICE = {
   PART1: "Unlock AI-powered resume generation.",
   PART2: "Upgrade to Pro to get started!",

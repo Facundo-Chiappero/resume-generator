@@ -17,7 +17,7 @@ export default function Education() {
   const [editingIndex, setEditingIndex] = useState<number | null>(null)
 
   const { progress } = useProgress()
-  const { setExperienceForm } = useExperience()
+  const { setExperienceForm, experienceForm } = useExperience()
 
   const { translateClass, slotProps } = formMovement({
     progress,
@@ -63,6 +63,7 @@ export default function Education() {
           schema={singleExperienceSchema}
           config={EXPERIENCE_FORM}
           slotProps={slotProps}
+          previousValue={experienceForm}
         />
       )}
     </section>

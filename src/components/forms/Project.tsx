@@ -18,7 +18,7 @@ export default function Project() {
 
   const { progress } = useProgress()
 
-  const { setProjectForm } = useProject()
+  const { setProjectForm, projectForm } = useProject()
 
   const { translateClass, slotProps } = formMovement({
     progress,
@@ -64,6 +64,7 @@ export default function Project() {
           schema={singleProjectSchema}
           config={PROJECTS_FORM}
           slotProps={slotProps}
+          previousValue={projectForm}
         />
       )}
     </section>

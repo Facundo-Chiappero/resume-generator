@@ -1,3 +1,13 @@
+export type UseAIRequestBodyType = {
+  instruction: string
+  headDataForm: HeadDataType
+  personalDataForm: PersonalDataType
+  educationForm: EducationType[]
+  experienceForm: ExperienceType[]
+  projectForm: ProjectType[]
+  skillsForm: SkillsType[]
+}
+
 export type HeadDataType = {
   fullName: string
   photo: File | null
@@ -21,8 +31,8 @@ export type ExperienceType = {
   place: string
   role: string
   experienceLocation: string
-  from: string
-  to: string
+  from?: string
+  to?: string
   tasks: string
 }
 export type ProjectType = {

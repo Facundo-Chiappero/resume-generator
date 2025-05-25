@@ -1,3 +1,11 @@
+import {
+  useEducation,
+  useExperience,
+  useHeadData,
+  usePersonalData,
+  useProject,
+  useSkills,
+} from "@context/useFormContextHooks"
 import { useIsPro } from "@hooks/useIsPro"
 import CreateIcon from "@mui/icons-material/Create"
 import { getSuggestion } from "@utils/getSuggestion"
@@ -20,6 +28,14 @@ export default function AIButton<T>({
   tabIndex,
 }: Props<T>) {
   const isPro = useIsPro()
+
+  const { personalDataForm } = usePersonalData()
+  const { headDataForm } = useHeadData()
+  const { educationForm } = useEducation()
+  const { experienceForm } = useExperience()
+  const { projectForm } = useProject()
+  const { skillsForm } = useSkills()
+
   if (!isPro) return
 
   const handleClick = async (
@@ -27,7 +43,14 @@ export default function AIButton<T>({
   ) => {
     setLoading(true)
     const suggestion = await getSuggestion({
-      instruction: `I have this text: "${previousValue}". Please improve its formatting, correct spelling errors, and ensure proper capitalization and punctuation while preserving the original content. Follow this specific guidance: ${instruction}. Important: DO NOT replace it with unrelated content - only enhance what's already there. If be any perchance i do not provide a text you can make it up`,
+      instruction: `I have this text: "${previousValue}". Please improve its formatting, correct spelling errors, and ensure proper capitalization and punctuation while preserving the original content. Additionally, enhance the text to make it more polished, professional, and compelling, as if presenting the user's skills, experience, or achievements in the best possible light. Follow this specific guidance: ${instruction}. Important: DO NOT replace it with unrelated content - only enhance what's already there. If, perchance, I do not provide a text, you can make it up.
+      `,
+      headDataForm,
+      personalDataForm,
+      educationForm,
+      experienceForm,
+      projectForm,
+      skillsForm,
     })
 
     if (suggestion.status !== 200) {
