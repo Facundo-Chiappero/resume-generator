@@ -7,7 +7,10 @@ import { ToastContainer } from "react-toastify"
 
 const LazyHome = lazy(() => import("./pages/Home"))
 const LazyUpgrade = lazy(() => import("./pages/Upgrade"))
+const LazyError404 = lazy(() => import("./pages/Error404"))
 
+// TODO agregar emote
+// TODO hacer que se guarde todo en localhost
 function App() {
   const { currentPage } = useNavigation()
   return (
@@ -23,6 +26,9 @@ function App() {
       >
         {currentPage === NAVIGATION.HOME.SLUG && <LazyHome />}
         {currentPage === NAVIGATION.UPGRADE.SLUG && <LazyUpgrade />}
+
+        {currentPage !== NAVIGATION.HOME.SLUG &&
+          currentPage !== NAVIGATION.UPGRADE.SLUG && <LazyError404 />}
       </Suspense>
 
       <ToastContainer

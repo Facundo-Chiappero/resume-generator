@@ -1,5 +1,7 @@
 // paypal
 import type { OrderResponseBody } from "@paypal/paypal-js"
+import { Dispatch, SetStateAction } from "react"
+import { ZodSchema } from "zod"
 
 export type PayPalButtonProps = {
   name: string
@@ -84,4 +86,107 @@ export type EducationErrors = {
   degree?: string
   startDate?: string
   endDate?: string
+}
+
+// functions
+type GenericFormProps<T> = {
+  editingIndex: number | null
+  data: T[]
+  previousValue: T[]
+  setData: React.Dispatch<React.SetStateAction<T[]>>
+  setFormData: React.Dispatch<React.SetStateAction<T[]>>
+  setEditingIndex: React.Dispatch<React.SetStateAction<number | null>>
+  setShowForm: React.Dispatch<React.SetStateAction<boolean>>
+  schema?: ZodSchema<T>
+  config: {
+    INPUTS: Record<
+      string,
+      {
+        KEY: keyof T
+        LABEL: string
+        PLACEHOLDER: string
+        REQUIRED: boolean
+        TYPE?: string
+        CATEGORIES?: readonly string[]
+        AUTOCOMPLETE?: string
+        INSTRUCTION?: string
+      }
+    >
+  }
+  slotProps: {
+    htmlInput: {
+      tabIndex: number
+      marginTop?: string
+    }
+  }
+}
+
+type SectionFormProps<T> = {
+  formKey: string
+  formStep: number
+  config: {
+    INPUTS: Record<
+      string,
+      {
+        KEY: keyof T
+        LABEL: string
+        PLACEHOLDER: string
+        REQUIRED: boolean
+        TYPE?: string
+        CATEGORIES?: readonly string[]
+        AUTOCOMPLETE?: string
+        INSTRUCTION?: string
+      }
+    >
+  }
+  schema?: ZodType<T, ZodTypeDef, T> | undefined
+  addButtonText: string
+  formData: T[]
+  setFormData: Dispatch<SetStateAction<T[]>>
+  initialData?: T[]
+  items: T[]
+  setItems: Dispatch<SetStateAction<T[]>>
+}
+
+type UseDynamicInputPropsProps<T> = {
+  editingIndex: number | null
+  data: T[]
+  config: {
+    INPUTS: Record<
+      string,
+      {
+        KEY: keyof T
+        LABEL: string
+        PLACEHOLDER: string
+        REQUIRED: boolean
+        TYPE?: string
+        CATEGORIES?: readonly string[]
+        AUTOCOMPLETE?: string
+        INSTRUCTION?: string
+      }
+    >
+  }
+}
+
+type handleFieldChangeProps = {
+  field: keyof T
+  value: string
+  isSkillsForm: boolean
+  setInstructions: React.Dispatch<React.SetStateAction<Record<keyof T, string>>>
+  setPlaceholders: React.Dispatch<React.SetStateAction<Record<keyof T, string>>>
+}
+
+type HandleSaveProps = {
+  editingIndex: number | null
+  item: T
+  setData: React.Dispatch<React.SetStateAction<T[]>>
+  setEditingIndex: React.Dispatch<React.SetStateAction<number | null>>
+  setFormData: React.Dispatch<React.SetStateAction<T[]>>
+  setShowForm: React.Dispatch<React.SetStateAction<boolean>>
+  data: T[]
+}
+
+type handleCancelProps = {
+  setEditingIndex: React.Dispatch<React.SetStateAction<number | null>>
+  setShowForm: React.Dispatch<React.SetStateAction<boolean>>
 }

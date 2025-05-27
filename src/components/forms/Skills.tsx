@@ -1,26 +1,22 @@
-import { useState } from "react"
-
 import { formMovement } from "@utils/form/formMovement"
 import { BUTTON_LABEL, FORM_POSITION, SKILLS_FORM } from "@utils/consts"
-import AddButton from "@components/buttons/AddButton"
-import GenericEntityList from "@components/template/GenericEntityList"
-import { handleDelete, handleEdit } from "@utils/form/formHandlers"
-import GenericEntityForm from "@components/template/GenericEntityForm"
 import { SkillsType } from "types"
 import { skillSchema } from "@schema/skills"
 import FormTitle from "@components/FormTitle"
 import { useProgress, useSkills } from "@context/useFormContextHooks"
+import { useLocalStorage } from "@hooks/useLocalStorage"
+import SectionForm from "@components/template/SectionForm"
 
 export default function Skills() {
-  const [skills, setSkills] = useState<SkillsType[]>([])
-  const [showForm, setShowForm] = useState(false)
-  const [editingIndex, setEditingIndex] = useState<number | null>(null)
+  const { items, setItems } = useLocalStorage<SkillsType>({
+    itemName: SKILLS_FORM.LOCAL_STORAGE,
+  })
 
   const { progress } = useProgress()
 
-  const { setSkillsForm, skillsForm } = useSkills()
+  const { skillsForm, setSkillsForm } = useSkills()
 
-  const { translateClass, slotProps } = formMovement({
+  const { translateClass } = formMovement({
     progress,
     step: FORM_POSITION.SKILLS,
   })
@@ -29,44 +25,17 @@ export default function Skills() {
     <section className={`form ${translateClass} overflow-y-auto  justify-end`}>
       <FormTitle text={SKILLS_FORM.TITLE} />
 
-      <GenericEntityList<SkillsType>
-        data={skills}
-        config={SKILLS_FORM}
-        onEdit={(index) => handleEdit({ index, setEditingIndex, setShowForm })}
-        onDelete={(index) =>
-          handleDelete({
-            index,
-            items: skills,
-            setItems: setSkills,
-            editingIndex,
-            setEditingIndex,
-            setShowForm,
-          })
-        }
+      <SectionForm<SkillsType>
+        formKey={SKILLS_FORM.LOCAL_STORAGE}
+        formStep={FORM_POSITION.EDUCATION}
+        config={{ ...SKILLS_FORM }}
+        schema={skillSchema}
+        addButtonText={BUTTON_LABEL.ADD_EDUCATION}
+        formData={skillsForm}
+        setFormData={setSkillsForm}
+        items={items}
+        setItems={setItems}
       />
-
-      {!showForm && (
-        <AddButton
-          setShowForm={setShowForm}
-          slotProps={slotProps}
-          text={BUTTON_LABEL.ADD_SKILL}
-        />
-      )}
-
-      {showForm && (
-        <GenericEntityForm<SkillsType>
-          editingIndex={editingIndex}
-          data={skills}
-          setData={setSkills}
-          setFormData={setSkillsForm}
-          setEditingIndex={setEditingIndex}
-          setShowForm={setShowForm}
-          schema={skillSchema}
-          config={SKILLS_FORM}
-          slotProps={slotProps}
-          previousValue={skillsForm}
-        />
-      )}
     </section>
   )
 }

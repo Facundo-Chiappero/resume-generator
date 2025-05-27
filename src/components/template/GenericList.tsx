@@ -4,18 +4,14 @@ import { IconButton } from "@mui/material"
 
 interface GenericListProps<T> {
   data: T[]
+  config: { INPUTS: Record<string, { LABEL: string; KEY: keyof T }> }
   onEdit: (index: number) => void
   onDelete: (index: number) => void
-  renderItem: (item: T) => React.ReactNode
 }
 
-//this generates the list used in GenericEntityList, the other component is used to reduce even more the amount of code in the main components
-export default function GenericList<T>({
-  data,
-  onEdit,
-  onDelete,
-  renderItem,
-}: GenericListProps<T>) {
+export default function GenericList<T>(props: GenericListProps<T>) {
+  const { data, config, onEdit, onDelete } = props
+
   return (
     <ul className="max-h-[400px] overflow-auto flex flex-col gap-2">
       {data.map((item, index) => (
@@ -23,7 +19,14 @@ export default function GenericList<T>({
           key={index}
           className="flex w-full justify-between border-2 border-light-text-primary dark:border-dark-text-primary p-4 rounded-xl"
         >
-          {renderItem(item)}
+          <main>
+            {Object.entries(config.INPUTS).map(([key, { LABEL, KEY }]) => (
+              <p key={key}>
+                <strong>{LABEL}:</strong> {item[KEY] as string}
+              </p>
+            ))}
+          </main>
+
           <aside>
             <IconButton
               onClick={() => onEdit(index)}

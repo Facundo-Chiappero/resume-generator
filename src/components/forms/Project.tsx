@@ -1,26 +1,22 @@
-import { useState } from "react"
-
 import { formMovement } from "@utils/form/formMovement"
 import { BUTTON_LABEL, FORM_POSITION, PROJECTS_FORM } from "@utils/consts"
-import AddButton from "@components/buttons/AddButton"
-import GenericEntityList from "@components/template/GenericEntityList"
-import { handleDelete, handleEdit } from "@utils/form/formHandlers"
-import GenericEntityForm from "@components/template/GenericEntityForm"
 import { ProjectType } from "types"
 import { singleProjectSchema } from "@schema/project"
 import FormTitle from "@components/FormTitle"
 import { useProgress, useProject } from "@context/useFormContextHooks"
+import { useLocalStorage } from "@hooks/useLocalStorage"
+import SectionForm from "@components/template/SectionForm"
 
 export default function Project() {
-  const [projects, setProjects] = useState<ProjectType[]>([])
-  const [showForm, setShowForm] = useState(false)
-  const [editingIndex, setEditingIndex] = useState<number | null>(null)
+  const { items, setItems } = useLocalStorage<ProjectType>({
+    itemName: PROJECTS_FORM.LOCAL_STORAGE,
+  })
 
   const { progress } = useProgress()
 
-  const { setProjectForm, projectForm } = useProject()
+  const { projectForm, setProjectForm } = useProject()
 
-  const { translateClass, slotProps } = formMovement({
+  const { translateClass } = formMovement({
     progress,
     step: FORM_POSITION.PROJECT,
   })
@@ -29,44 +25,17 @@ export default function Project() {
     <section className={`form ${translateClass} overflow-y-auto  justify-end`}>
       <FormTitle text={PROJECTS_FORM.TITLE} />
 
-      <GenericEntityList<ProjectType>
-        data={projects}
-        config={PROJECTS_FORM}
-        onEdit={(index) => handleEdit({ index, setEditingIndex, setShowForm })}
-        onDelete={(index) =>
-          handleDelete({
-            index,
-            items: projects,
-            setItems: setProjects,
-            editingIndex,
-            setEditingIndex,
-            setShowForm,
-          })
-        }
+      <SectionForm<ProjectType>
+        formKey={PROJECTS_FORM.LOCAL_STORAGE}
+        formStep={FORM_POSITION.EDUCATION}
+        config={{ ...PROJECTS_FORM }}
+        schema={singleProjectSchema}
+        addButtonText={BUTTON_LABEL.ADD_EDUCATION}
+        formData={projectForm}
+        setFormData={setProjectForm}
+        items={items}
+        setItems={setItems}
       />
-
-      {!showForm && (
-        <AddButton
-          setShowForm={setShowForm}
-          slotProps={slotProps}
-          text={BUTTON_LABEL.ADD_PROJECT}
-        />
-      )}
-
-      {showForm && (
-        <GenericEntityForm<ProjectType>
-          editingIndex={editingIndex}
-          data={projects}
-          setData={setProjects}
-          setFormData={setProjectForm}
-          setEditingIndex={setEditingIndex}
-          setShowForm={setShowForm}
-          schema={singleProjectSchema}
-          config={PROJECTS_FORM}
-          slotProps={slotProps}
-          previousValue={projectForm}
-        />
-      )}
     </section>
   )
 }

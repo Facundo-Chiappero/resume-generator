@@ -1,25 +1,22 @@
-import { useState } from "react"
 import { EducationType } from "@types"
 import { formMovement } from "@utils/form/formMovement"
 import { BUTTON_LABEL, EDUCATION_FORM, FORM_POSITION } from "@utils/consts"
-import AddButton from "@components/buttons/AddButton"
-import GenericEntityList from "@components/template/GenericEntityList"
-import { handleDelete, handleEdit } from "@utils/form/formHandlers"
-import GenericEntityForm from "@components/template/GenericEntityForm"
 import { singleEducationSchema } from "@schema/education"
 import FormTitle from "@components/FormTitle"
 import { useEducation, useProgress } from "@context/useFormContextHooks"
+import SectionForm from "@components/template/SectionForm"
+import { useLocalStorage } from "@hooks/useLocalStorage"
 
 export default function Education() {
-  const [educations, setEducations] = useState<EducationType[]>([])
-  const [showForm, setShowForm] = useState(false)
-  const [editingIndex, setEditingIndex] = useState<number | null>(null)
+  const { items, setItems } = useLocalStorage<EducationType>({
+    itemName: EDUCATION_FORM.LOCAL_STORAGE,
+  })
 
   const { progress } = useProgress()
 
   const { setEducationForm, educationForm } = useEducation()
 
-  const { translateClass, slotProps } = formMovement({
+  const { translateClass } = formMovement({
     progress,
     step: FORM_POSITION.EDUCATION,
   })
@@ -28,44 +25,17 @@ export default function Education() {
     <section className={`form ${translateClass} overflow-y-auto justify-end`}>
       <FormTitle text={EDUCATION_FORM.TITLE} />
 
-      <GenericEntityList<EducationType>
-        data={educations}
-        config={EDUCATION_FORM}
-        onEdit={(index) => handleEdit({ index, setEditingIndex, setShowForm })}
-        onDelete={(index) =>
-          handleDelete({
-            index,
-            items: educations,
-            setItems: setEducations,
-            editingIndex,
-            setEditingIndex,
-            setShowForm,
-          })
-        }
+      <SectionForm<EducationType>
+        formKey={EDUCATION_FORM.LOCAL_STORAGE}
+        formStep={FORM_POSITION.EDUCATION}
+        config={{ ...EDUCATION_FORM }}
+        schema={singleEducationSchema}
+        addButtonText={BUTTON_LABEL.ADD_EDUCATION}
+        formData={educationForm}
+        setFormData={setEducationForm}
+        items={items}
+        setItems={setItems}
       />
-
-      {!showForm && (
-        <AddButton
-          setShowForm={setShowForm}
-          slotProps={slotProps}
-          text={BUTTON_LABEL.ADD_EDUCATION}
-        />
-      )}
-
-      {showForm && (
-        <GenericEntityForm<EducationType>
-          editingIndex={editingIndex}
-          data={educations}
-          setData={setEducations}
-          setFormData={setEducationForm}
-          setEditingIndex={setEditingIndex}
-          setShowForm={setShowForm}
-          schema={singleEducationSchema}
-          config={EDUCATION_FORM}
-          slotProps={slotProps}
-          previousValue={educationForm}
-        />
-      )}
     </section>
   )
 }

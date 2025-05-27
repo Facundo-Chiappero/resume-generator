@@ -28,6 +28,7 @@ export const HEAD_DATA_FORM = {
     },
   },
   TITLE: "Name and Photo",
+  LOCAL_STORAGE: "headData",
 }
 export const PERSONAL_DATA_FORM = {
   INPUTS: {
@@ -69,6 +70,7 @@ export const PERSONAL_DATA_FORM = {
     },
   },
   TITLE: "Personal Information",
+  LOCAL_STORAGE: "personalData",
 }
 export const EDUCATION_FORM = {
   INPUTS: {
@@ -125,6 +127,7 @@ export const EDUCATION_FORM = {
     },
   },
   TITLE: "Studies",
+  LOCAL_STORAGE: "education",
 }
 export const EXPERIENCE_FORM = {
   INPUTS: {
@@ -181,6 +184,7 @@ export const EXPERIENCE_FORM = {
     },
   },
   TITLE: "Working Experience",
+  LOCAL_STORAGE: "experience",
 }
 export const PROJECTS_FORM = {
   INPUTS: {
@@ -218,6 +222,7 @@ export const PROJECTS_FORM = {
     },
   },
   TITLE: "Related Projects/Activities",
+  LOCAL_STORAGE: "projects",
 }
 export const SKILLS_FORM = {
   INPUTS: {
@@ -239,6 +244,7 @@ export const SKILLS_FORM = {
     },
   },
   TITLE: "Skills",
+  LOCAL_STORAGE: "skills",
 }
 export const SKILL_PLACEHOLDERS: Record<string, string[]> = {
   technical: [
