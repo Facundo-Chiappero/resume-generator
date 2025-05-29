@@ -1,11 +1,9 @@
 import { useEffect, useRef, useState } from "react"
 
 export const FAQAccordion = () => {
-  // Estado para controlar qué acordeón está abierto
   const [openIndex, setOpenIndex] = useState<number | null>(null)
   const contentRefs = useRef<(HTMLDivElement | null)[]>([])
 
-  // Array de preguntas y respuestas
   const faqs = [
     {
       question: "What's included in the Pro plan?",
@@ -13,9 +11,8 @@ export const FAQAccordion = () => {
         "The Pro plan includes unlimited AI-powered resume enhancements. You'll get access to all our AI features to make your resume stand out to recruiters.",
     },
     {
-      question: "Can I cancel my subscription anytime?",
-      answer:
-        "Absolutely! You can cancel your Pro subscription at any time with no questions asked. There are no long-term commitments, and you'll continue to have access until the end of your billing period.",
+      question: "How long does the plan last?",
+      answer: "The plan has no expiration and remains active indefinitely.",
     },
     {
       question: "How is the free plan different from Pro?",
@@ -25,7 +22,7 @@ export const FAQAccordion = () => {
     {
       question: "Is my payment information secure?",
       answer:
-        "Yes, all payments are processed securely through Stripe. We never store your full credit card details on our servers. Your transaction is protected with bank-level encryption.",
+        "Yes, all payments are securely processed through PayPal. We do not store your credit card or payment details on our servers. Your transaction is protected by PayPal's advanced encryption and security measures.",
     },
   ]
 
@@ -33,7 +30,6 @@ export const FAQAccordion = () => {
     contentRefs.current = contentRefs.current.slice(0, faqs.length)
   }, [faqs.length])
 
-  // Función para manejar el clic en un acordeón
   const toggleAccordion = (index: number) => {
     setOpenIndex(openIndex === index ? null : index)
   }

@@ -1,7 +1,6 @@
 import { SignInButton as ClerkButton } from "@clerk/clerk-react"
 import { ButtonHTMLAttributes } from "react"
 
-// Envuelve tu botón con ClerkSignInButton en tu componente
 export default function SignInButton({
   text = "Sign In",
   ...props
