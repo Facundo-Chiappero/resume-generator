@@ -26,3 +26,4 @@ dist-ssr
 *.sw?
 
 public/iconHD.png
+public/preview.png
