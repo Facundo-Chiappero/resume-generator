@@ -6,7 +6,7 @@ Create your own Harvard-style resume easily and professionally. This web-based p
 
 ## 🌐 Live Demo
 
-🔗 [your-resume-generator.netlify.app](https://your-resume-generator.netlify.app/)
+🔗 [your-resume-generator.netlify.app](https://resume-generator.facundochiappero.online/)
 
 ---
 
@@ -91,7 +91,7 @@ Crea tu propio currículum al estilo Harvard de manera fácil y profesional. Est
 
 ## 🌐 Demo en Producción
 
-🔗 [your-resume-generator.netlify.app](https://your-resume-generator.netlify.app/)
+🔗 [your-resume-generator.netlify.app](https://resume-generator.facundochiappero.online/)
 
 ---
 
