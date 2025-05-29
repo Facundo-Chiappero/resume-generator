@@ -9,8 +9,6 @@ const LazyHome = lazy(() => import("./pages/Home"))
 const LazyUpgrade = lazy(() => import("./pages/Upgrade"))
 const LazyError404 = lazy(() => import("./pages/Error404"))
 
-// TODO agregar emote
-// TODO hacer que se guarde todo en localhost
 function App() {
   const { currentPage } = useNavigation()
   return (

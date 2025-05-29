@@ -63,7 +63,6 @@ export default function CreateResume() {
         title={BUTTON_LABEL.DOWNLOAD_WORD}
         aria-label={BUTTON_LABEL.DOWNLOAD_WORD}
         onClick={() => {
-          alert(CREATE_RESUME.WARNING)
           createResumeDocx({
             headDataForm,
             personalDataForm,

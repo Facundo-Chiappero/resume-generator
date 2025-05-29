@@ -194,7 +194,7 @@ export const PROJECTS_FORM = {
       PLACEHOLDER: "Data Analysis Project",
       REQUIRED: true,
       INSTRUCTION:
-        'Provide the name of a project or activity related to a type of work. The project can be from any field and does not need to be technology-related. Do not use "Data Analysis Project" or any variation of it. The name should be clear and descriptive.',
+        'Provide the name of a project or activity related to a type of work. The project can be from any field and does not need to be technology-related. Do not use "Data Analysis Project" or any variation of it. The name should be clear and descriptive. Give me only the name, no description, no responsibilities, no outcomes or anything like that, just the name.',
     },
     EXPLANATION: {
       KEY: "explanation" as const,
@@ -268,7 +268,6 @@ export const SKILL_INSTRUCTIONS: Record<string, string> = {
 }
 export const CREATE_RESUME = {
   TITLE: "Your Resume Is Done",
-  WARNING: "we recommend opening the file twice",
 }
 export const BUTTON_LABEL = {
   SAVE: "Save",
@@ -278,7 +277,7 @@ export const BUTTON_LABEL = {
   ADD_PROJECT: "Add Project/Activity",
   ADD_SKILL: "Add Skill",
   DOWNLOAD_PDF: "Download PDF",
-  DOWNLOAD_WORD: "Download Word less recommended",
+  DOWNLOAD_WORD: "Download Word",
 }
 export const ERROR = {
   HEAD_DATA: {

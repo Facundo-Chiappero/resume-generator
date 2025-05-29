@@ -9,7 +9,7 @@ export const INSTRUCTIONS = ({
   projectForm,
   skillsForm,
 }: Partial<Omit<UseAIRequestBodyType, "instruction">>) => {
-  return `Only provide exactly what is requested by the user, with no additional explanations, no extra text, no introductory sentences, and , and **no Markdown formatting**. Your sole task is to IMPROVE THE EXISTING TEXT provided by the user. Improve the text by correcting its formatting, spelling, capitalization, and grammar while keeping the original meaning and content intact. Do not alter or replace specific data such as addresses, names, emails, or any other personally identifiable information. Respond ONLY with the enhanced version of the input text, no quotation marks, no Markdown, no extra words, and no elaborations.
+  return `Only provide exactly what is requested by the user, with no additional explanations, no extra text, no introductory sentences and no Markdown formatting. Your sole task is to IMPROVE THE EXISTING TEXT provided by the user. Improve the text by correcting its formatting, spelling, capitalization, and grammar while keeping the original meaning and content intact. Do not alter or replace specific data such as addresses, names, emails, or any other personally identifiable information. Respond ONLY with the enhanced version of the input text, no quotation marks, no Markdown, no extra words, and no elaborations.
 
 If the user requests a GPA, ensure that you provide the GPA in the correct format, including both the score and the maximum possible score. For GPA-related requests, the maximum score must always be: ${
     [4, 10, 100][Math.floor(Math.random() * 3)]
@@ -29,6 +29,8 @@ Additional context to consider, this is what the user already wrote:
   - **projectForm**: ${projectForm}
   - **skillsForm**: ${skillsForm}
 
-Read it to better understand the user and what kind of response he/she expects. You have that information although you just need to provide what is asked by the user. Make sure everything makes sense, for example if the name is john doe the email would be john@gmail.com and not other unrelated thing like jane@gmail.com
+Read it to better understand the user and what kind of response he/she expects. You have that information although you just need to provide what is asked by the user. Make sure everything makes sense, for example if the name is john doe the email would be john@gmail.com and not other unrelated thing like jane@gmail.com.
+
+Remember to not use markdown
 `
 }

@@ -17,6 +17,9 @@ export const HeadDataProvider = ({ children }: { children: ReactNode }) => {
   })
 
   const value = useMemo(() => {
+    // since we are using a blob for the preview when user reloads the page the blob will be lost, to avoid this problem we simply delete de information.
+    headDataForm.photo = null
+    headDataForm.photoPreview = null
     localStorage.setItem(
       HEAD_DATA_FORM.LOCAL_STORAGE,
       JSON.stringify(headDataForm)
