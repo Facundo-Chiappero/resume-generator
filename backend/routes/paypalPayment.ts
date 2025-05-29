@@ -1,5 +1,6 @@
 import { Router, Request, Response } from "express"
 import { connectToDatabase, getPaymentsCollection } from "../config/db"
+import { sendEmail } from "../config/resend"
 
 const router = Router()
 
@@ -13,6 +14,11 @@ router.post("/", async (req: Request, res: Response) => {
       planId == null ||
       userId == null
     ) {
+      sendEmail({
+        error: `Missing data for payment:\npaymentId:${paymentId}\namount:${amount}\nplanId:${planId}\nuserId:${userId}`,
+        subject: "Error creating payment",
+      })
+
       res.status(400).json({ message: "There is missing data" })
       return
     }
@@ -35,7 +41,8 @@ router.post("/", async (req: Request, res: Response) => {
       message: "Payment stored successfully!, Reload the page to see changes",
     })
   } catch (error) {
-    console.error("Error saving payment", error)
+    sendEmail({ error, subject: "Error saving payment" })
+
     res.status(500).json({ message: "Error saving payment." })
   }
 })

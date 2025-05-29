@@ -2,6 +2,7 @@ import { Router } from "express"
 import { GoogleGenAI } from "@google/genai"
 import { INSTRUCTIONS } from "../config/instructions"
 import { UseAIRequestBodyType } from "@types"
+import { sendEmail } from "../config/resend"
 
 const router = Router()
 
@@ -37,7 +38,8 @@ router.post("/", async (req, res) => {
     res.status(200).json({ message: text })
     return
   } catch (error) {
-    console.error(error)
+    sendEmail({ error, subject: "Error getting suggestion" })
+
     res
       .status(400)
       .json({ message: "There was an error while getting suggestion" })
