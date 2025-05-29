@@ -1,6 +1,7 @@
 import EditIcon from "@mui/icons-material/Edit"
 import DeleteIcon from "@mui/icons-material/Delete"
 import { IconButton } from "@mui/material"
+import { useIsLight } from "@hooks/useIsLight"
 
 interface GenericListProps<T> {
   data: T[]
@@ -11,6 +12,7 @@ interface GenericListProps<T> {
 
 export default function GenericList<T>(props: GenericListProps<T>) {
   const { data, config, onEdit, onDelete } = props
+  const isLight = useIsLight()
 
   return (
     <ul className="max-h-[400px] overflow-auto flex flex-col gap-2">
@@ -36,6 +38,7 @@ export default function GenericList<T>(props: GenericListProps<T>) {
                 ":hover": {
                   background: "rgba(0, 0, 0, .2)",
                 },
+                background: isLight ? "rgba(0, 0, 0, .1)" : "",
               }}
             >
               <EditIcon />
@@ -48,6 +51,7 @@ export default function GenericList<T>(props: GenericListProps<T>) {
                 ":hover": {
                   background: "rgba(0, 0, 0, .2)",
                 },
+                background: isLight ? "rgba(0, 0, 0, .1)" : "",
               }}
             >
               <DeleteIcon />

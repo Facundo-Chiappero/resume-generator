@@ -32,24 +32,22 @@ export default function BuyModal({
       >
         <button
           onClick={() => setIsOpen(false)}
-          className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors duration-200"
+          className="absolute top-4 right-4 text-gray-400 hover:text-black dark:hover:text-white  transition-colors duration-200"
         >
           <Cross />
         </button>
 
-        <h3 className="text-2xl font-bold mb-6 text-center text-white">
+        <h3 className="text-2xl font-bold mb-6 text-center ">
           Select payment method
         </h3>
 
         <section className="flex flex-col gap-4">
-          <div className="bg-dark-background-tertiary p-3 rounded-lg text-center text-gray-300">
+          <div className="bg-light-background-tertiary dark:bg-dark-background-tertiary p-3 rounded-lg text-center ">
             <p className="text-lg font-semibold">Plan: {name}</p>
-            <p className="text-xl text-white">
-              Price: <span className="font-bold"> ${price}</span>
-            </p>
+            <p className="text-xl">Price: ${price}</p>
           </div>
 
-          <div className="flex flex-col justify-center items-center p-4 bg-dark-background-tertiary rounded-lg">
+          <div className="flex flex-col justify-center items-center p-4 bg-light-background-tertiary dark:bg-dark-background-tertiary rounded-lg">
             <PayPalButton name={name} price={price} userId={userId} />
           </div>
         </section>

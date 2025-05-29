@@ -6,6 +6,7 @@ import BuyButton from "@components/buttons/BuyButton"
 import BuyModal from "@components/BuyModal"
 import { usePreventScroll } from "@hooks/usePrventScroll"
 import { useGetUserPlan } from "@hooks/useGetUserPlan"
+import useEscapeKey from "@hooks/useEscapeKey"
 
 type Props = {
   plan: {
@@ -23,10 +24,11 @@ export default function PlanCard({ plan }: Props) {
   const { user } = useUser()
   const { currentPlan } = useGetUserPlan({ userId: user?.id })
   usePreventScroll({ isOpen })
+  useEscapeKey(() => setIsOpen(false))
 
   return (
     <>
-      <article className="bg-light-background-black text-light-text-secondary dark:bg-dark-background-white dark:text-dark-text-secondary w-full rounded-xl py-4 grid gap-y-4  grid-rows-[auto_auto_1fr_auto]">
+      <article className="bg-light-background-secondary  dark:bg-dark-background-white dark:text-dark-text-secondary w-full rounded-xl py-4 grid gap-y-4  grid-rows-[auto_auto_1fr_auto]">
         <header className="px-4">
           <h3 className="text-xl -mb-1 font-bold">{plan.name}</h3>
           <small className="opacity-80 font-semibold">{plan.description}</small>
@@ -37,7 +39,7 @@ export default function PlanCard({ plan }: Props) {
             {plan.extraInfo}
           </small>
         </main>
-        <section className="p-4 bg-black dark:bg-white border-y border-black/25 text-sm">
+        <section className="p-4 bg-light-background-tertiary dark:bg-white border-y border-black/25 text-sm">
           <ul className="space-y-2">
             {plan.features.map((feature) => (
               <li key={feature} className="flex items-center">

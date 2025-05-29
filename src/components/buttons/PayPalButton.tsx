@@ -3,13 +3,8 @@ import { toast } from "react-toastify"
 import { useCard } from "@hooks/useCard"
 import { PayPalButtonProps } from "types"
 import { openCardWindow } from "@utils/paypal/paypalCardWindow"
-import { handlePaymentSuccess } from "@utils/paypal/paypalHandler"
-import type {
-  OnApproveActions,
-  OnApproveData,
-  OrderResponseBody,
-} from "@paypal/paypal-js"
 import Card from "@components/icons/Card"
+import { handleApprove } from "@utils/paypal/paypalHandler"
 
 export default function PayPalButton({
   name,
@@ -17,21 +12,6 @@ export default function PayPalButton({
   userId,
 }: PayPalButtonProps) {
   useCard({ name, price, userId })
-
-  const handleApprove = async (_: OnApproveData, actions: OnApproveActions) => {
-    if (!actions.order) return Promise.reject("No order action found")
-    if (!userId) return Promise.reject("User is not signed in")
-
-    const rawDetails = await actions.order.capture()
-    const details = rawDetails as OrderResponseBody
-
-    if (!details?.id || !details?.payer?.email_address) {
-      toast.error("Invalid PayPal capture response")
-      return
-    }
-
-    handlePaymentSuccess({ details, name, price, userId })
-  }
 
   return (
     <>
@@ -55,7 +35,9 @@ export default function PayPalButton({
               ],
             })
           }}
-          onApprove={handleApprove}
+          onApprove={(_, actions) =>
+            handleApprove({ actions, name, price, userId })
+          }
           onCancel={() => toast.error("Payment canceled")}
           onError={() => toast.error("Error while doing payment")}
         />

@@ -53,7 +53,7 @@ export const FAQAccordion = () => {
 
   return (
     <section className="w-full max-w-3xl mx-auto mt-8 mb-12 px-4">
-      <h2 className="text-2xl font-bold text-light-text-primary dark:text-dark-text-primary mb-8 text-center">
+      <h2 className="text-2xl font-bold   mb-8 text-center">
         Frequently Asked Questions
       </h2>
 
@@ -68,9 +68,7 @@ export const FAQAccordion = () => {
               className="w-full px-4 py-3 text-left flex justify-between items-center focus:outline-none bg-light-background-secondary dark:bg-dark-background-secondary  cursor-pointer"
               onClick={() => toggleAccordion(index)}
             >
-              <span className="font-medium text-light-text-primary dark:text-dark-text-primary">
-                {faq.question}
-              </span>
+              <span className="font-medium  ">{faq.question}</span>
               <svg
                 className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${
                   openIndex === index ? "transform rotate-180" : ""

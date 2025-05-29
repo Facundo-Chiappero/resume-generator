@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <>
       <main className="w-full flex flex-col items-center justify-center gap-4 p-4 mt-16">
-        <h1 className="light-text-secondary title text-light-text-primary dark:text-dark-text-primary text-4xl font-bold text-center">
+        <h1 className="light-text-secondary title   text-4xl font-bold text-center">
           {HOME_TITLE}
         </h1>
 

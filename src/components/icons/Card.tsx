@@ -10,7 +10,7 @@ export default function Card() {
       <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g
           transform="translate(-3.000000, -6.000000)"
-          fill="#ffffff"
+          fill="currentColor"
           fillRule="nonzero"
         >
           <path

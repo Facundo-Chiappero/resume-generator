@@ -5,7 +5,7 @@ import { NAVIGATION } from "@utils/consts"
 
 export default function Layout() {
   return (
-    <header className="flex justify-end gap-4 py-4 px-8 bg-dark-background-secondary text-gray-300 whitespace-nowrap fixed top-0 left-0 right-0 z-50">
+    <header className="flex justify-end gap-4 py-4 px-8 bg-light-background-tertiary dark:bg-dark-background-secondary text-gray-600 dark:text-gray-300 whitespace-nowrap fixed top-0 left-0 right-0 z-50">
       <Link to={NAVIGATION.HOME.SLUG} className="flex items-center">
         {NAVIGATION.HOME.NAME}
       </Link>

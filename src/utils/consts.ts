@@ -355,3 +355,7 @@ export const NAV_BUTTONS = {
   BACK: "Back",
   NEXT: "Next",
 }
+export const USE_ESCAPE_KEY = {
+  KEY: "Escape",
+  EVENT: "keydown" as const,
+}
