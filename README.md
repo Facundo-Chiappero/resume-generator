@@ -21,6 +21,7 @@ Create your own Harvard-style resume easily and professionally. This web-based p
 - ⚙️ **Single Page Application (SPA)** with custom client-side routing that mimics React Router behavior — built from scratch without using the actual library.
 - 📘 **FAQ Section and Plan Comparison Table** on the upgrade page.
 - 🔒 **Authentication via Clerk** with optional registration for Pro features.
+- 📧 **Notificaciones por correo usando Resend**: El sistema envía automáticamente un mail al equipo del sitio web si falla un pago o una petición de sugerencia a la IA.
 
 ---
 
@@ -63,7 +64,8 @@ The AI assistant (powered by **Gemini 2.0 Flash**) enhances your resume content 
 - Express
 - MongoDB
 - AI integration with **Gemini 2.0 Flash**
-- Deployed on **Replit**
+- Deployed on **Render**
+- Email notifications sent with **Resend**
 
 ---
 
@@ -104,6 +106,7 @@ Crea tu propio currículum al estilo Harvard de manera fácil y profesional. Est
 - ⚙️ **Aplicación de una sola página (SPA)** con un enrutamiento personalizado en el cliente que imita el comportamiento de React Router — construido desde cero sin usar la librería.
 - 📘 **Sección de preguntas frecuentes (FAQ)** y tabla comparativa de planes en la página de mejora.
 - 🔒 **Autenticación con Clerk**, con registro opcional para acceder a funciones Pro.
+- 📧 **Email notifications via Resend**: The system automatically sends an email to the web site team if a payment fails or if an AI suggestion request fails.
 
 ---
 
@@ -147,7 +150,8 @@ El asistente de IA (impulsado por **Gemini 2.0 Flash**) mejora el contenido del 
 - Express
 - MongoDB
 - Integración con IA mediante **Gemini 2.0 Flash**
-- Desplegado en **Replit**
+- Desplegado en **Render**
+- Notificaciones por correo enviadas con **Resend**
 
 ---
 
